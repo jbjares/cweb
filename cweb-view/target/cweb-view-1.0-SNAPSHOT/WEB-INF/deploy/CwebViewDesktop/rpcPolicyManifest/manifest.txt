@@ -1,0 +1,10 @@
+# Module CwebViewDesktop
+# RPC service class, partial path of RPC policy file
+br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacade, B6CE54E2DD963A3A8B70E333412C3EF0.gwt.rpc
+br.com.cweb.view.seguranca.trocasenha.client.service.TrocaSenhaServiceFacade, 80D1767BE8A4B6F41B49ED7841A7C235.gwt.rpc
+br.com.cweb.view.cadastro.cadastroconvenio.client.service.CadastroConvenioServiceFacade, 2E23069916AF5B59849EFB6B979133F4.gwt.rpc
+br.com.cweb.view.seguranca.acessorecurso.client.service.AcessoRecursoServiceFacade, 4A2E88955115B37ED1A3FE11EA71EE20.gwt.rpc
+br.com.cweb.view.seguranca.cadastrogrupoacesso.client.service.CadastroGrupoAcessoServiceFacade, 5ACA1935FAED1DA5248E9FD457881F4F.gwt.rpc
+br.com.cweb.view.seguranca.acessomenugrupo.client.service.AcessoMenuGrupoServiceFacade, EF16D8EDB6E3DEB81007F8CFF1625D11.gwt.rpc
+br.com.cweb.view.cadastro.instituicaofinanceira.client.service.InstituicaoFinanceiraServiceFacade, 2729397FC553B11208B849EEC21A24C3.gwt.rpc
+br.com.cweb.view.desktop.client.service.DesktopService, A802545AB2FA290DC57AA78B7F0A9929.gwt.rpc

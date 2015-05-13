@@ -1,0 +1,136 @@
+package br.com.cweb.view.cadastro.cadastrogeral.server;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.stereotype.Service;
+import br.com.cweb.cadastro.persistence.entity.Atribuicao;
+import br.com.cweb.cadastro.persistence.entity.Banco;
+import br.com.cweb.cadastro.persistence.entity.Cidade;
+import br.com.cweb.cadastro.persistence.entity.Endereco;
+import br.com.cweb.cadastro.persistence.entity.Estado;
+import br.com.cweb.cadastro.persistence.entity.PerfilComissao;
+import br.com.cweb.cadastro.persistence.entity.Pessoa;
+import br.com.cweb.cadastro.persistence.entity.PessoaFisica;
+import br.com.cweb.cadastro.persistence.entity.PessoaJuridica;
+import br.com.cweb.cadastro.persistence.entity.TipoConta;
+import br.com.cweb.seguranca.persistence.entity.GrupoAcesso;
+import br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacade;
+
+@Service("CadastroGeralServiceFacade")
+public class CadastroGeralServiceFacadeImpl implements CadastroGeralServiceFacade{
+
+	public List<Estado> retornaListaEstados() {
+		
+		Estado estado = new Estado();
+		estado.setId(new Long("1"));
+		estado.setNome("PARA");
+		
+		List<Estado> listaEstados = new ArrayList<Estado>();
+		listaEstados.add(estado);
+		
+		return listaEstados;
+	}
+
+	public List<Cidade> retornaListaCidades(){
+		
+		Cidade cidade = new Cidade();
+		cidade.setNome("Belem");
+		cidade.setId(new Long("1"));
+		
+		List<Cidade> listaCidades = new ArrayList<Cidade>();
+		listaCidades.add(cidade);
+		return listaCidades;
+	}
+	
+	public List<Banco> retornaListaBancos(){
+		
+		Banco banco = new Banco();
+		banco.setNome("Banco da Amazonia");
+		banco.setId(new Long("11111111111111111"));
+		
+		List<Banco> listaBancos = new ArrayList<Banco>();
+		listaBancos.add(banco);
+		return listaBancos;
+	}
+	
+	public List<TipoConta> retornaListaTipoConta(){
+		
+		TipoConta corrente = TipoConta.CORRENTE;
+		TipoConta poupanca = TipoConta.POUPANCA;
+		
+		List<TipoConta> listaTiposContas = new ArrayList<TipoConta>();
+		
+		listaTiposContas.add(corrente);
+		listaTiposContas.add(poupanca);
+		
+		return listaTiposContas;
+	}
+	
+	public List<PerfilComissao> retornaListaPerfilComissao(){
+		
+		PerfilComissao perfilComissao = new PerfilComissao();
+		perfilComissao.setNome("Perfil Comissao 1");
+		
+		List<PerfilComissao> listaPerfilComissao = new ArrayList<PerfilComissao>();
+		listaPerfilComissao.add(perfilComissao);
+		
+		return listaPerfilComissao;
+	}
+	
+	public List<GrupoAcesso> retornaListaGrupoAcesso(){
+		
+		GrupoAcesso grupoAcesso = new GrupoAcesso();
+		grupoAcesso.setNome("Grupo Acesso 1");
+		
+		List<GrupoAcesso> listaGrupoAcesso = new ArrayList<GrupoAcesso>();
+		listaGrupoAcesso.add(grupoAcesso);
+		
+		return listaGrupoAcesso;
+	}
+	
+	public List<Atribuicao> retornaListaAtribuicao(){
+		
+		Atribuicao atribuicao = new Atribuicao();
+		atribuicao.setNome("Atribuicao 1");
+	
+		List<Atribuicao> listaAtribuicao = new ArrayList<Atribuicao>();
+		listaAtribuicao.add(atribuicao);
+		
+		return listaAtribuicao;
+	} 
+	
+	public List<Pessoa> retornaListaPessoa(){
+		
+//		Estado estado = new Estado();
+//		estado.setNome("Ceara");
+//	    Cidade cidade = new Cidade();
+//		cidade.setNome("Fortaleza");
+//		cidade.setEstado(estado);
+//		
+//		Endereco endereco = new Endereco();
+//		endereco.setCidade(cidade);
+		
+		PessoaJuridica pessoaJuridica1 = new PessoaJuridica();
+		pessoaJuridica1.setId(new Long("123456789"));
+		pessoaJuridica1.setNomeFantasia("Joao Bosco");
+		pessoaJuridica1.setCnpj(new Long("12398765875"));
+		pessoaJuridica1.setEndereco(new ArrayList<Endereco>());
+		
+		PessoaJuridica pessoaJuridica3 = new PessoaJuridica();
+		pessoaJuridica3.setId(new Long("123456789"));
+		pessoaJuridica3.setNomeFantasia("Marcelo");
+		pessoaJuridica3.setCnpj(new Long("12398765875"));
+		
+		PessoaJuridica pessoaJuridica2 = new PessoaJuridica();
+		pessoaJuridica2.setId(new Long("123456789"));
+		pessoaJuridica2.setNomeFantasia("Maria");
+		pessoaJuridica2.setCnpj(new Long("12398765875"));
+		
+		List<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+		listaPessoa.add(pessoaJuridica1);
+		listaPessoa.add(pessoaJuridica2);
+		listaPessoa.add(pessoaJuridica3);
+		
+		return listaPessoa;
+	}
+}

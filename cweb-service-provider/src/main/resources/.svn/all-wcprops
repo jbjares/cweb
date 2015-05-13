@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cweb-repo-fnt/!svn/ver/470/trunk/cweb/cweb-service-provider/src/main/resources
+END
+templateMensagem.txt
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-service-provider/src/main/resources/templateMensagem.txt
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/cweb-repo-fnt/!svn/ver/137/trunk/cweb/cweb-service-provider/src/main/resources/log4j.properties
+END
+cweb-service.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/cweb-repo-fnt/!svn/ver/373/trunk/cweb/cweb-service-provider/src/main/resources/cweb-service.xml
+END

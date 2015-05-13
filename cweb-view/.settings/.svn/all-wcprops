@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/cweb-repo-fnt/!svn/ver/183/trunk/cweb/cweb-view/.settings
+END
+org.eclipse.jdt.core.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-view/.settings/org.eclipse.jdt.core.prefs
+END
+com.google.gwt.eclipse.core.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-view/.settings/com.google.gwt.eclipse.core.prefs
+END
+org.eclipse.core.resources.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cweb-repo-fnt/!svn/ver/183/trunk/cweb/cweb-view/.settings/org.eclipse.core.resources.prefs
+END
+org.maven.ide.eclipse.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-view/.settings/org.maven.ide.eclipse.prefs
+END

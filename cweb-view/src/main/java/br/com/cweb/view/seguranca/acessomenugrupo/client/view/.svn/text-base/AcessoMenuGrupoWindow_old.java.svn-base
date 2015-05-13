@@ -1,0 +1,365 @@
+package br.com.cweb.view.seguranca.acessomenugrupo.client.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkEvent.EventType;
+
+import br.com.cweb.relatorio.to.TipoFormatoRelatorio;
+import br.com.cweb.relatorio.to.TipoNomeRelatorio;
+import br.com.cweb.seguranca.persistence.entity.AcessoGrupoDTO;
+import br.com.cweb.seguranca.persistence.entity.GrupoAcesso;
+import br.com.cweb.seguranca.persistence.entity.TipoSituacaoGrupo;
+import br.com.cweb.view.cadastro.cadastrogeral.client.i18n.CadastroGeralI18N;
+import br.com.cweb.view.cadastro.cadastrogeral.client.view.AjudaCadastroGeralWindow;
+import br.com.cweb.view.desktop.client.i18n.DesktopI18N;
+import br.com.cweb.view.seguranca.acessomenugrupo.client.service.AcessoMenuGrupoServiceFacade;
+import br.com.cweb.view.seguranca.acessomenugrupo.client.service.AcessoMenuGrupoServiceFacadeAsync;
+import br.com.cweb.view.seguranca.cadastrogrupoacesso.client.i18n.CadastroGrupoAcessoI18N;
+import br.com.cweb.view.seguranca.cadastrogrupoacesso.client.service.CadastroGrupoAcessoServiceFacade;
+import br.com.cweb.view.seguranca.cadastrogrupoacesso.client.service.CadastroGrupoAcessoServiceFacadeAsync;
+import br.com.cweb.view.template.client.TemplateWindow;
+import br.com.cweb.widgets.action.RpcCallback;
+import br.com.cweb.widgets.action.RpcWaitCallback;
+import br.com.cweb.widgets.build.BeanModelBuilder;
+import br.com.cweb.widgets.constants.Function;
+import br.com.cweb.widgets.window.DefaultWindowConfig;
+import br.com.cweb.widgets.window.IWindow;
+import br.com.cweb.widgets.window.IWindowConfig;
+import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
+import com.extjs.gxt.ui.client.Style.SelectionMode;
+import com.extjs.gxt.ui.client.data.BasePagingLoader;
+import com.extjs.gxt.ui.client.data.BeanModel;
+import com.extjs.gxt.ui.client.data.BeanModelReader;
+import com.extjs.gxt.ui.client.data.PagingLoadConfig;
+import com.extjs.gxt.ui.client.data.PagingLoadResult;
+import com.extjs.gxt.ui.client.data.PagingLoader;
+import com.extjs.gxt.ui.client.data.RpcProxy;
+import com.extjs.gxt.ui.client.event.BaseEvent;
+import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.Listener;
+import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.store.ListStore;
+import com.extjs.gxt.ui.client.widget.Component;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.MessageBox;
+import com.extjs.gxt.ui.client.widget.button.Button;
+import com.extjs.gxt.ui.client.widget.form.CheckBox;
+import com.extjs.gxt.ui.client.widget.form.ComboBox;
+import com.extjs.gxt.ui.client.widget.form.FieldSet;
+import com.extjs.gxt.ui.client.widget.form.FormPanel;
+import com.extjs.gxt.ui.client.widget.form.LabelField;
+import com.extjs.gxt.ui.client.widget.form.NumberField;
+import com.extjs.gxt.ui.client.widget.form.Radio;
+import com.extjs.gxt.ui.client.widget.form.RadioGroup;
+import com.extjs.gxt.ui.client.widget.form.SimpleComboBox;
+import com.extjs.gxt.ui.client.widget.form.TextField;
+import com.extjs.gxt.ui.client.widget.grid.CellEditor;
+import com.extjs.gxt.ui.client.widget.grid.CheckColumnConfig;
+import com.extjs.gxt.ui.client.widget.grid.ColumnConfig;
+import com.extjs.gxt.ui.client.widget.grid.ColumnModel;
+import com.extjs.gxt.ui.client.widget.grid.EditorGrid;
+import com.extjs.gxt.ui.client.widget.grid.Grid;
+import com.extjs.gxt.ui.client.widget.grid.GridSelectionModel;
+import com.extjs.gxt.ui.client.widget.layout.AbsoluteData;
+import com.extjs.gxt.ui.client.widget.layout.AbsoluteLayout;
+import com.extjs.gxt.ui.client.widget.toolbar.PagingToolBar;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
+public class AcessoMenuGrupoWindow extends TemplateWindow{
+
+	
+	AcessoMenuGrupoServiceFacadeAsync service = GWT.create(AcessoMenuGrupoServiceFacade.class);
+
+	private TextField<String> textDescricao;
+	private SimpleComboBox<TipoSituacaoGrupo> comboSituacao;
+	private LayoutContainer containerPrincipal;
+	private ContentPanel panelPrincipal;
+	private FormPanel form;
+	private Grid<BeanModel> grid;
+	private PagingToolBar toolBar;
+	private static final int PAGE_SIZE = 5;
+	private List<CheckColumnConfig> plugins;
+	
+	
+	public AcessoMenuGrupoWindow(IWindowConfig cfg) {
+		
+		plugins = new ArrayList<CheckColumnConfig>();
+		setWindowConfig(cfg);
+		setMinimizable(true);
+		setResizable(false);
+		setSize("882px", "375px");
+		setHeading(CadastroGrupoAcessoI18N.constants.title());
+		new FormPanel().setBodyStyle(bbarStyle);
+		containerPrincipal = new LayoutContainer();
+		containerPrincipal.setId("id_ContainerPrincipal");
+		containerPrincipal.setBorders(true);
+		
+		panelPrincipal = new ContentPanel();
+		panelPrincipal.setId("id_PanelPrincipal");
+		panelPrincipal.setHeaderVisible(false);
+		panelPrincipal.setButtonAlign(HorizontalAlignment.LEFT);
+		panelPrincipal.setAutoWidth(true);
+		panelPrincipal.setAutoHeight(true);
+		panelPrincipal.setSize("800", "300");
+		panelPrincipal.add(getForm());
+		containerPrincipal.add(panelPrincipal);
+		add(containerPrincipal);
+		add(getContainerBotoes());
+		add(getResultado());
+		atualizarGrid();
+	}
+	
+	private Component getForm() {
+	
+		form = new FormPanel();
+		form.setId("idFormGa");
+		form.setHeaderVisible(false);
+		form.setHeight(100);
+		
+		textDescricao = new TextField<String>();
+		textDescricao.setId("idDesc");
+		textDescricao.setAllowBlank(false);
+		textDescricao.setFieldLabel("Grupo de Acesso");
+		textDescricao.setReadOnly(true);
+		
+		GrupoAcesso grupoAcesso = obterObjetoDominio();
+		textDescricao.setValue(grupoAcesso.getNome());
+		textDescricao.setBorders(false);
+		
+		form.add(textDescricao);
+		
+		return form;
+	}
+	
+	private Component getResultado(){
+		
+		ContentPanel panelGrid = new ContentPanel();
+		panelGrid.setId("idContainerGrid");
+		
+		grid = getGridConsulta();
+		grid.setId("idGrid");
+		panelGrid = new ContentPanel();
+		panelGrid.setId("id_PanelGrid");
+		panelGrid.add(grid);
+		panelGrid.setBottomComponent(toolBar);
+		return panelGrid;
+	}
+	
+	private ColumnModel getColumnModel() {
+		 List<ColumnConfig> configs = new ArrayList<ColumnConfig>();  
+		   
+		 ColumnConfig column = new ColumnConfig();    
+		 column.setId("nomeFuncionalidade");    
+		 column.setHeader("Funcionalidade");    
+		 column.setWidth(300);    
+		 configs.add(column);  
+		 
+		 CheckColumnConfig checkColumn = new CheckColumnConfig("isfnConsultar", "Consultar", 55);  
+		 CellEditor checkBoxEditor = new CellEditor(new CheckBox());  
+		 checkColumn.setEditor(checkBoxEditor);  
+		 configs.add(checkColumn);
+		 plugins.add(checkColumn);
+		 
+		 checkColumn = new CheckColumnConfig("isfnIncluir", "Incluir", 55);      
+		 checkBoxEditor = new CellEditor(new CheckBox());  
+		 checkColumn.setEditor(checkBoxEditor);
+		 configs.add(checkColumn);
+		 plugins.add(checkColumn);
+		 
+		 checkColumn = new CheckColumnConfig("isfnAlterar", "Alterar", 55);      
+		 checkBoxEditor = new CellEditor(new CheckBox());  
+		 checkColumn.setEditor(checkBoxEditor);
+		 configs.add(checkColumn);
+		 plugins.add(checkColumn);
+		 
+		 checkColumn = new CheckColumnConfig("isfnExcluir", "Excluir", 55);      
+		 checkBoxEditor = new CellEditor(new CheckBox());  
+		 checkColumn.setEditor(checkBoxEditor);
+		 configs.add(checkColumn);
+		 plugins.add(checkColumn);
+		 
+		 checkColumn = new CheckColumnConfig("isfnImprimir", "Imprimir", 55);      
+		 checkBoxEditor = new CellEditor(new CheckBox());  
+		 checkColumn.setEditor(checkBoxEditor);
+		 configs.add(checkColumn);
+		 plugins.add(checkColumn);
+		 
+		 ColumnModel columnModel = new ColumnModel(configs);
+		 
+		 return columnModel;
+	}
+	
+	public Grid<BeanModel> getGridConsulta() {
+		ColumnModel columnModel = getColumnModel();
+		grid = new Grid<BeanModel>(new ListStore(),columnModel);
+		grid.setId("id_Grid");
+		grid.setColumnReordering(true);
+		grid.setVisible(true);
+		grid.setColumnLines(true);
+		grid.setStripeRows(true);
+		grid.setSize("700", "150");
+		grid.setBorders(true);
+		grid.setAutoWidth(true);
+		loadPluginGrid();
+		
+		GridSelectionModel selectModel = grid.getSelectionModel();
+		selectModel.setSelectionMode(SelectionMode.SINGLE);
+		
+		toolBar = new PagingToolBar(PAGE_SIZE);
+		toolBar.setId("idBarGrupoAcesso");
+		return grid;
+	}
+	
+	private void atualizarGrid() {
+		RpcProxy proxyGrid = new RpcProxy() {
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				
+				GrupoAcesso grupoAcesso = (GrupoAcesso) obterObjetoDominio();
+				
+				service.retornaListaPaginadaAcessoGrupoDTO((PagingLoadConfig)loadConfig,grupoAcesso,callback);
+				
+			}
+
+		};
+			
+		BeanModelReader readerGrid = new BeanModelReader();		
+		PagingLoader<PagingLoadResult<BeanModel>> loader = 
+				new BasePagingLoader<PagingLoadResult<BeanModel>>(proxyGrid,readerGrid);
+		ListStore<BeanModel> store = new ListStore<BeanModel>(loader);
+		loader.load();
+
+		toolBar.bind(loader);
+		grid.getStore().removeAll();
+		grid.reconfigure(store, getColumnModel());		
+	}
+	
+	protected GrupoAcesso obterObjetoDominio(){
+		
+		GrupoAcesso grupoAcesso = (GrupoAcesso) getWindowConfig().getParameters().get(IWindow.DOMAIN_OBJECT);
+		return grupoAcesso;
+	}
+	
+	private Component getContainerBotoes(){
+		
+		/* define o container para os botoes de pesquisa */
+		LayoutContainer containerBotoes = new LayoutContainer();
+		containerBotoes.setId("id_ContainerBotoes");
+		
+		/* define o layout para o container*/
+		AbsoluteLayout layoutBotoes = new AbsoluteLayout();		
+		containerBotoes.setLayout(layoutBotoes);
+		
+		/* define os botoes*/
+		
+		Button btnLimpar = new Button(CadastroGeralI18N.constants.limpar());
+		btnLimpar.setId("id_BtnAlterar");
+		Button btnIncluir = new Button(CadastroGeralI18N.constants.incluir());
+		btnIncluir.setId("id_BtnIncluir");
+		Button btnVoltar = new Button("Voltar");
+		btnVoltar.setId("id_BtnImprimir");
+		
+		btnVoltar.addSelectionListener(new SelectionListener<ButtonEvent>() {
+			@Override
+			public void componentSelected(ButtonEvent ce) {
+				close();
+			}
+			
+		});
+		
+		
+		btnLimpar.addSelectionListener(new SelectionListener<ButtonEvent>() {
+			@Override
+			public void componentSelected(ButtonEvent ce) {
+				atualizarGrid();
+			}
+			
+		});
+		
+		btnIncluir.addSelectionListener(new SelectionListener<ButtonEvent>() {
+			public void componentSelected(ButtonEvent ce) {
+				
+				List<BeanModel> models = (List<BeanModel>) grid.getStore().getModels();
+				List<AcessoGrupoDTO> resultAcGrupo = new ArrayList<AcessoGrupoDTO>();
+				
+				/* Grupo de Acesso selecionado*/
+				GrupoAcesso grupoAcesso = (GrupoAcesso) getWindowConfig().getParameters().get(IWindow.DOMAIN_OBJECT);
+				
+				for(BeanModel bm:models){
+					
+					AcessoGrupoDTO acGrupoDTO = bm.getBean();
+					resultAcGrupo.add(acGrupoDTO);
+				}
+				
+				service.atualizarAcessoMenu(resultAcGrupo, grupoAcesso, new RpcWaitCallback<Object>(DesktopI18N.messages.aguarde(),DesktopI18N.messages.processando()) {
+				
+					@Override
+					public void handleResponse(Object object) {
+						MessageBox.alert(CadastroGeralI18N.messages.headingInformacao(), CadastroGrupoAcessoI18N.messages.sucessOperation(), null);
+					}
+					
+					@Override
+					public void handleFailure(Throwable exception) {
+						MessageBox.alert(CadastroGeralI18N.messages.headingInformacao(), CadastroGrupoAcessoI18N.messages.errorOperation(), null);
+					}
+				});
+				
+			}
+		});
+		
+		/* tooltips para os botoes */
+		btnLimpar.setToolTip(CadastroGeralI18N.tooltip.botaoAlterar());
+		btnIncluir.setToolTip(CadastroGeralI18N.tooltip.botaoIncluir());
+		btnVoltar.setToolTip(CadastroGeralI18N.tooltip.botaoImprimir());
+		btnLimpar.setToolTip(CadastroGeralI18N.tooltip.botaoAlterar());
+		
+		/* adiciona os botoes ao grid */
+		containerBotoes.add(btnLimpar, new AbsoluteData(752, 6));
+		containerBotoes.add(btnIncluir, new AbsoluteData(706, 6));
+		containerBotoes.add(btnVoltar,new AbsoluteData(803, 6));
+		containerBotoes.setSize("868", "32");
+	
+		return containerBotoes;
+	}
+	
+	protected void loadPluginGrid(){
+		
+		for(CheckColumnConfig plugin:plugins){
+			grid.addPlugin(plugin);
+		}
+	}
+	
+	@Override
+	protected void onAjuda() {
+		AjudaAcessoMenuGrupoWindow ajudaAcessoMenuGrupoWindow = new AjudaAcessoMenuGrupoWindow();
+		ajudaAcessoMenuGrupoWindow.show();
+	}
+	
+	@Override
+	protected void onClearForm(){
+		form.clear();
+	}
+	
+	protected boolean isDadosValidos(){
+		
+		if(!textDescricao.isValid()){
+			return false;
+		}
+		else if(!comboSituacao.isValid()){
+				return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
+
+}

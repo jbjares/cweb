@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/cweb-repo-fnt/!svn/ver/482/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao
+END
+PessoaDAOImplTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/PessoaDAOImplTest.java
+END
+InstituicaoFinanceiraDAOImplTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn/cweb-repo-fnt/!svn/ver/450/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/InstituicaoFinanceiraDAOImplTest.java
+END
+DadosBancariosDAOImplTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/cweb-repo-fnt/!svn/ver/511/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/DadosBancariosDAOImplTest.java
+END
+ConvenioDAOImplTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/cweb-repo-fnt/!svn/ver/434/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/ConvenioDAOImplTest.java
+END
+AtribuicaoDAOImplTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/cweb-repo-fnt/!svn/ver/482/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/AtribuicaoDAOImplTest.java
+END
+PessoaFisicaJuridicaDAOTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/PessoaFisicaJuridicaDAOTest.java
+END
+UsuarioDAOImplIntTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/cweb-repo-fnt/!svn/ver/273/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/UsuarioDAOImplIntTest.java
+END
+AcessoMenuDAOImplTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/cweb-repo-fnt/!svn/ver/594/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/AcessoMenuDAOImplTest.java
+END
+FuncionalidadeDAOImplTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/cweb-repo-fnt/!svn/ver/611/trunk/cweb/cweb-persistence-provider/src/test/java/br/com/cweb/cadastro/persistence/test/dao/FuncionalidadeDAOImplTest.java
+END

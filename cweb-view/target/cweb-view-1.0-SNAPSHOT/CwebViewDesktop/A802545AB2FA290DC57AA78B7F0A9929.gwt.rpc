@@ -1,0 +1,69 @@
+br.com.cweb.cadastro.persistence.entity.ArvoreFamiliar, true, true, true, true, br.com.cweb.cadastro.persistence.entity.ArvoreFamiliar/2808529220, 2808529220
+@ClientFields,br.com.cweb.cadastro.persistence.entity.ArvoreFamiliar,id,pessoa,arvore,nivel
+br.com.cweb.cadastro.persistence.entity.Atribuicao, true, true, true, true, br.com.cweb.cadastro.persistence.entity.Atribuicao/2358068784, 2358068784
+@ClientFields,br.com.cweb.cadastro.persistence.entity.Atribuicao,id,nome,codigoHierarquico
+br.com.cweb.cadastro.persistence.entity.Cidade, true, true, true, true, br.com.cweb.cadastro.persistence.entity.Cidade/1159706616, 1159706616
+@ClientFields,br.com.cweb.cadastro.persistence.entity.Cidade,id,nome,estado
+[Lbr.com.cweb.cadastro.persistence.entity.Cidade;, true, true, true, true, [Lbr.com.cweb.cadastro.persistence.entity.Cidade;/3695592329, 3695592329
+br.com.cweb.cadastro.persistence.entity.ContaBancaria, true, true, true, true, br.com.cweb.cadastro.persistence.entity.ContaBancaria/1963720608, 1963720608
+@ClientFields,br.com.cweb.cadastro.persistence.entity.ContaBancaria,id,pessoa,banco,tipoConta,agencia,conta,nomeFavorecido,cpfCnpjFavorecido,cpfCnpjFavorecidoMascarado
+[Lbr.com.cweb.cadastro.persistence.entity.ContaBancaria;, true, true, true, true, [Lbr.com.cweb.cadastro.persistence.entity.ContaBancaria;/2479143526, 2479143526
+br.com.cweb.cadastro.persistence.entity.Endereco, true, true, true, true, br.com.cweb.cadastro.persistence.entity.Endereco/1109738307, 1109738307
+@ClientFields,br.com.cweb.cadastro.persistence.entity.Endereco,id,pessoa,cidade,tipoEndereco,endereco,numero,cep,bairro,email,fax,telefoneFixo,celular,nomeResponsavel,telefoneResponsavel
+[Lbr.com.cweb.cadastro.persistence.entity.Endereco;, true, true, true, true, [Lbr.com.cweb.cadastro.persistence.entity.Endereco;/4233337058, 4233337058
+br.com.cweb.cadastro.persistence.entity.Estado, true, true, true, true, br.com.cweb.cadastro.persistence.entity.Estado/377296711, 377296711
+@ClientFields,br.com.cweb.cadastro.persistence.entity.Estado,id,nome,sigla,regiao,cidades
+br.com.cweb.cadastro.persistence.entity.InstituicaoFinanceira, true, true, true, true, br.com.cweb.cadastro.persistence.entity.InstituicaoFinanceira/3001789167, 3001789167
+@ClientFields,br.com.cweb.cadastro.persistence.entity.InstituicaoFinanceira,id,nome,tipoInstituicao,sigla,site,observacoes
+br.com.cweb.cadastro.persistence.entity.PerfilComissao, true, true, true, true, br.com.cweb.cadastro.persistence.entity.PerfilComissao/555920445, 555920445
+@ClientFields,br.com.cweb.cadastro.persistence.entity.PerfilComissao,id,nome,pessoas
+br.com.cweb.cadastro.persistence.entity.Pessoa, true, true, true, true, br.com.cweb.cadastro.persistence.entity.Pessoa/4040299406, 4040299406
+@ClientFields,br.com.cweb.cadastro.persistence.entity.Pessoa,id,perfilComissao,pessoaVinculadora,atribuicao,tipoPessoa,possuiBonificacaoContratual,enderecos,dadosBancarios,usuario,arvoreFamiliar,vinculados
+br.com.cweb.cadastro.persistence.entity.PessoaFisica, true, true, true, true, br.com.cweb.cadastro.persistence.entity.PessoaFisica/71683337, 71683337
+@ClientFields,br.com.cweb.cadastro.persistence.entity.PessoaFisica,nome,cpf,apelido
+[Lbr.com.cweb.cadastro.persistence.entity.PessoaFisica;, true, true, true, true, [Lbr.com.cweb.cadastro.persistence.entity.PessoaFisica;/2949029722, 2949029722
+br.com.cweb.cadastro.persistence.entity.PessoaJuridica, true, true, true, true, br.com.cweb.cadastro.persistence.entity.PessoaJuridica/2581919241, 2581919241
+@ClientFields,br.com.cweb.cadastro.persistence.entity.PessoaJuridica,razaoSocial,cnpj,nomeFantasia,sigla
+[Lbr.com.cweb.cadastro.persistence.entity.PessoaJuridica;, true, true, true, true, [Lbr.com.cweb.cadastro.persistence.entity.PessoaJuridica;/3761416939, 3761416939
+[Lbr.com.cweb.cadastro.persistence.entity.Pessoa;, true, true, true, true, [Lbr.com.cweb.cadastro.persistence.entity.Pessoa;/1930767873, 1930767873
+br.com.cweb.cadastro.persistence.entity.TipoConta, true, true, true, true, br.com.cweb.cadastro.persistence.entity.TipoConta/1467776311, 1467776311
+br.com.cweb.cadastro.persistence.entity.TipoEndereco, true, true, true, true, br.com.cweb.cadastro.persistence.entity.TipoEndereco/3705569210, 3705569210
+br.com.cweb.cadastro.persistence.entity.TipoInstituicao, true, true, true, true, br.com.cweb.cadastro.persistence.entity.TipoInstituicao/138639325, 138639325
+br.com.cweb.cadastro.persistence.entity.TipoPessoa, true, true, true, true, br.com.cweb.cadastro.persistence.entity.TipoPessoa/1405647552, 1405647552
+br.com.cweb.cadastro.persistence.entity.UsuarioLogadoDTO, true, true, false, false, br.com.cweb.cadastro.persistence.entity.UsuarioLogadoDTO/2486216669, 2486216669
+br.com.cweb.core.persistence.entity.EntityModel, true, false, true, false, br.com.cweb.core.persistence.entity.EntityModel/21476523, 21476523
+br.com.cweb.mensagem.exception.MensagemException, true, true, false, false, br.com.cweb.mensagem.exception.MensagemException/694185558, 694185558
+br.com.cweb.mensagem.to.Mensagem, true, true, false, false, br.com.cweb.mensagem.to.Mensagem/4223174925, 4223174925
+[Lbr.com.cweb.mensagem.to.Mensagem;, true, true, false, false, [Lbr.com.cweb.mensagem.to.Mensagem;/293322735, 293322735
+br.com.cweb.seguranca.persistence.entity.GrupoAcesso, true, true, true, true, br.com.cweb.seguranca.persistence.entity.GrupoAcesso/1091394704, 1091394704
+@ClientFields,br.com.cweb.seguranca.persistence.entity.GrupoAcesso,id,pessoaResponsavel,usuarios,nome
+br.com.cweb.seguranca.persistence.entity.MenuDTO, true, true, false, false, br.com.cweb.seguranca.persistence.entity.MenuDTO/2265074607, 2265074607
+[Lbr.com.cweb.seguranca.persistence.entity.MenuDTO;, true, true, false, false, [Lbr.com.cweb.seguranca.persistence.entity.MenuDTO;/3770326044, 3770326044
+br.com.cweb.seguranca.persistence.entity.TipoFuncionalidade, true, true, false, false, br.com.cweb.seguranca.persistence.entity.TipoFuncionalidade/1362178606, 1362178606
+br.com.cweb.seguranca.persistence.entity.Usuario, true, true, true, true, br.com.cweb.seguranca.persistence.entity.Usuario/2445256274, 2445256274
+@ClientFields,br.com.cweb.seguranca.persistence.entity.Usuario,id,gupoAcesso,pessoa,login,senha,idSuperUsuario
+[Lbr.com.cweb.seguranca.persistence.entity.Usuario;, true, true, true, true, [Lbr.com.cweb.seguranca.persistence.entity.Usuario;/45943676, 45943676
+br.com.cweb.view.desktop.client.service.DesktopService, false, false, false, false, _, 1379096500
+com.google.gwt.i18n.client.impl.DateRecord, true, true, true, true, com.google.gwt.i18n.client.impl.DateRecord/3220471373, 3220471373
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+com.google.gwt.user.client.rpc.RpcTokenException, true, true, false, false, com.google.gwt.user.client.rpc.RpcTokenException/2345075298, 2345075298
+com.google.gwt.user.client.rpc.XsrfToken, false, false, true, true, com.google.gwt.user.client.rpc.XsrfToken/4254043109, 4254043109
+java.lang.Boolean, true, true, true, true, java.lang.Boolean/476441737, 476441737
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.Integer, true, true, true, true, java.lang.Integer/3438268394, 3438268394
+java.lang.Long, true, true, true, true, java.lang.Long/4227064769, 4227064769
+java.lang.Number, true, false, true, false, java.lang.Number/300033342, 300033342
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.sql.Date, true, true, true, true, java.sql.Date/730999118, 730999118
+java.sql.Time, true, true, true, true, java.sql.Time/1816797103, 1816797103
+java.sql.Timestamp, true, true, true, true, java.sql.Timestamp/3040052672, 3040052672
+java.util.ArrayList, true, true, true, true, java.util.ArrayList/4159755760, 4159755760
+java.util.Arrays$ArrayList, true, true, true, true, java.util.Arrays$ArrayList/2507071751, 2507071751
+java.util.Collections$EmptyList, true, true, true, true, java.util.Collections$EmptyList/4157118744, 4157118744
+java.util.Collections$SingletonList, true, true, true, true, java.util.Collections$SingletonList/1586180994, 1586180994
+java.util.Date, true, true, true, true, java.util.Date/3385151746, 3385151746
+java.util.LinkedList, true, true, true, true, java.util.LinkedList/3953877921, 3953877921
+java.util.Stack, true, true, true, true, java.util.Stack/1346942793, 1346942793
+java.util.Vector, true, true, true, true, java.util.Vector/3057315478, 3057315478

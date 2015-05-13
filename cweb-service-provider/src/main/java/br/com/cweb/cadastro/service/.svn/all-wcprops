@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/cweb-repo-fnt/!svn/ver/486/trunk/cweb/cweb-service-provider/src/main/java/br/com/cweb/cadastro/service
+END
+OrganogramaServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/cweb-repo-fnt/!svn/ver/485/trunk/cweb/cweb-service-provider/src/main/java/br/com/cweb/cadastro/service/OrganogramaServiceImpl.java
+END
+ComissaoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/cweb-repo-fnt/!svn/ver/182/trunk/cweb/cweb-service-provider/src/main/java/br/com/cweb/cadastro/service/ComissaoServiceImpl.java
+END
+LocalizacaoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/cweb-repo-fnt/!svn/ver/486/trunk/cweb/cweb-service-provider/src/main/java/br/com/cweb/cadastro/service/LocalizacaoServiceImpl.java
+END
+PlanoBancarioServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/cweb-repo-fnt/!svn/ver/459/trunk/cweb/cweb-service-provider/src/main/java/br/com/cweb/cadastro/service/PlanoBancarioServiceImpl.java
+END
+InstituicaoFinanceiraServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/cweb-repo-fnt/!svn/ver/532/trunk/cweb/cweb-service-provider/src/main/java/br/com/cweb/cadastro/service/InstituicaoFinanceiraServiceImpl.java
+END

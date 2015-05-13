@@ -1,0 +1,14 @@
+<module rename-to="CwebViewTemplate">
+<stylesheet src="/ExtGWT/css/gxt-all.css"/>
+	<stylesheet src="/ExtGWT/css/gxt-all.css"/>
+	<inherits name="com.google.gwt.user.User"/>
+<<<<<<< .mine
+	
+	
+	<inherits name="com.google.gwt.user.theme.standard.Standard"/> 
+	<inherits name="com.extjs.gxt.ui.GXT"/> 
+=======
+	<inherits name="com.extjs.gxt.ui.GXT"/>
+>>>>>>> .r282
+	<source path='client' />
+</module>

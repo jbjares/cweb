@@ -1,0 +1,2 @@
+serviceClass: br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacade
+path: B6CE54E2DD963A3A8B70E333412C3EF0.gwt.rpc

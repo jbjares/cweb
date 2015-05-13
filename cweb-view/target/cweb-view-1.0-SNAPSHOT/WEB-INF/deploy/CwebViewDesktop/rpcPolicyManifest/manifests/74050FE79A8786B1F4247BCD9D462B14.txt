@@ -1,0 +1,2 @@
+serviceClass: br.com.cweb.view.seguranca.acessomenugrupo.client.service.AcessoMenuGrupoServiceFacade
+path: EF16D8EDB6E3DEB81007F8CFF1625D11.gwt.rpc

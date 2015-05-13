@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" type="image/ico" href="imagens/icone/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="CwebViewDesktop.css">
+
+    <title>Correspondente WEB</title>
+    <script type="text/javascript" language="javascript" src="CwebViewDesktop/CwebViewDesktop.nocache.js"></script>
+    
+    <script language='javascript' src="ExtGWT/flash/swfobject.js"></script>
+    <link rel="stylesheet" type="text/css" href="ExtGWT/css/gxt-all.css" />
+    <link rel="stylesheet" type="text/css" href="ExtGWT/css/gxt-gray.css" />
+    <link rel="stylesheet" type="text/css" href="ExtGWT/desktop/css/desktop.css" />
+
+  </head>
+
+
+  <body background="fundo.jpg">
+
+
+    <div id="x-desktop">    	
+    		<dl id="x-shortcuts">
+    		</dl>
+		</div>
+
+  </body>
+</html>

@@ -1,0 +1,17 @@
+#Sun Jul 01 18:22:16 BRT 2012
+eclipse.preferences.version=1
+encoding//src/main/java/br/com/cweb/view/seguranca/acessomenugrupo/client/view/AjudaAcessoMenuGrupoWindow.java=UTF-8
+encoding//src/main/java/br/com/cweb/view/seguranca/cadastrogrupoacesso/client/i18n/CadastroGrupoAcessoConstants.java=UTF-8
+encoding//src/main/java/br/com/cweb/view/seguranca/cadastrogrupoacesso/client/i18n/CadastroGrupoAcessoI18N.java=UTF-8
+encoding//src/main/java/br/com/cweb/view/seguranca/cadastrogrupoacesso/client/view/AjudaCadastroGrupoAcessoWindow.java=UTF-8
+encoding//src/main/resources/br/com/cweb/view/cadastro/cadastroconvenio/client/i18n/CadastroConvenioConstants.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/cadastro/cadastroconvenio/client/i18n/CadastroConvenioMessages.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/cadastro/cadastroconvenio/client/i18n/CadastroConvenioTooltip.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/cadastro/cadastrogeral/client/i18n/CadastroGeralConstants.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/cadastro/cadastrogeral/client/i18n/CadastroGeralTooltip.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/desktop/client/i18n/DesktopMessages.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/seguranca/cadastrogrupoacesso/client/i18n/CadastroGrupoAcessoConstants.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/seguranca/cadastrogrupoacesso/client/i18n/CadastroGrupoAcessoMessages.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/seguranca/cadastrogrupoacesso/client/i18n/CadastroGrupoAcessoTooltip.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/seguranca/trocasenha/client/i18n/TrocaSenhaConstants.properties=UTF-8
+encoding//src/main/resources/br/com/cweb/view/seguranca/trocasenha/client/i18n/TrocaSenhaMessages.properties=UTF-8

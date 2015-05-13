@@ -1,0 +1,46 @@
+10
+
+dir
+507
+https://subversion.assembla.com/svn/cweb-repo-fnt/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/seguranca
+https://subversion.assembla.com/svn/cweb-repo-fnt
+
+
+
+2011-12-14T03:33:53.924247Z
+417
+sebastiao_nunes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+75361ff3-b4e9-43f5-a7a9-d500a547c727
+
+acessomenugrupo
+dir
+
+autenticacao
+dir
+
+acessorecurso
+dir
+
+autorizacao
+dir
+
+trocasenha
+dir
+
+cadastrogrupoacesso
+dir
+

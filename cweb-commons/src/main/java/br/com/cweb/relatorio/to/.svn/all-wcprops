@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/cweb-repo-fnt/!svn/ver/474/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/relatorio/to
+END
+RelatorioConstantes.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/cweb-repo-fnt/!svn/ver/167/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/relatorio/to/RelatorioConstantes.java
+END
+TipoFormatoRelatorio.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/cweb-repo-fnt/!svn/ver/152/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/relatorio/to/TipoFormatoRelatorio.java
+END
+TipoNomeRelatorio.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/cweb-repo-fnt/!svn/ver/474/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/relatorio/to/TipoNomeRelatorio.java
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cweb-repo-fnt/!svn/ver/433/trunk/cweb/cweb-persistence-provider/src/main/resources
+END
+cweb-persistence.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/cweb-repo-fnt/!svn/ver/284/trunk/cweb/cweb-persistence-provider/src/main/resources/cweb-persistence.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/cweb-repo-fnt/!svn/ver/137/trunk/cweb/cweb-persistence-provider/src/main/resources/log4j.properties
+END
+orm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-provider/src/main/resources/orm.xml
+END
+hibernate.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/cweb-repo-fnt/!svn/ver/433/trunk/cweb/cweb-persistence-provider/src/main/resources/hibernate.cfg.xml
+END

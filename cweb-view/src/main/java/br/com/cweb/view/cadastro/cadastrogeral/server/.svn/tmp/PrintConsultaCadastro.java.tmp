@@ -1,0 +1,96 @@
+package br.com.cweb.view.cadastro.cadastrogeral.server;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.com.cweb.relatorio.to.RelatorioConstantes;
+
+<<<<<<< .mine
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import br.com.cweb.cadastro.persistence.entity.PessoaFisicaJuridica;
+import br.com.cweb.seguranca.service.SegurancaServletServiceImpl;
+
+=======
+>>>>>>> .r153
+@SuppressWarnings("serial")
+public class PrintConsultaCadastro extends RemoteServiceServlet {
+
+	@Override
+<<<<<<< .mine
+	public void init() throws ServletException {
+		super.init();
+
+		appContext = WebApplicationContextUtils
+				.getRequiredWebApplicationContext(getServletContext());
+	}
+
+	public WebApplicationContext getAppContext() {
+		return appContext;
+	}
+	
+	@Override
+=======
+>>>>>>> .r153
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		
+<<<<<<< .mine
+		List<PessoaFisicaJuridica> result = (List<PessoaFisicaJuridica>) request.getAttribute("result");
+		
+		PessoaFisicaJuridica p1 = new PessoaFisicaJuridica();
+		p1.setApelidoNomeFantasia("Sebastiao");
+=======
+		String nomeRelatorio = (String) request.getParameter(RelatorioConstantes.NOME_RELATORIO);
+		String extensaoRelatorio = (String) request.getParameter(RelatorioConstantes.TIPO_RELATORIO);
+>>>>>>> .r153
+		
+		byte[] bytes = (byte[]) request.getSession().getAttribute(nomeRelatorio);
+		
+<<<<<<< .mine
+		result.add(p1);
+		result.add(p2);
+
+		InputStream is = getClass().getResourceAsStream("/br/com/cweb/view/cadastro/cadastrogeral/server/cadastro.jasper");
+		printPdf(response,is,result);
+		
+			
+	}
+	
+	private void printPdf(HttpServletResponse response,InputStream is,List<PessoaFisicaJuridica> result) throws IOException{
+		
+		byte[] bytes = null;
+		
+		try {
+			bytes = JasperRunManager.runReportToPdf(is,null, new JRBeanCollectionDataSource(result));
+		} 
+		
+		catch (JRException e) {
+			e.printStackTrace();
+		}
+
+=======
+>>>>>>> .r153
+        if (bytes != null && bytes.length > 0) {  
+        	response.setContentType("application/pdf");
+        	response.setHeader("Content-disposition","attachment;filename="+nomeRelatorio+"."+extensaoRelatorio);
+        	response.setContentLength(bytes.length); 
+            ServletOutputStream ouputStream = response.getOutputStream();  
+            ouputStream.write(bytes, 0, bytes.length);
+            request.getSession().removeAttribute(nomeRelatorio);
+            ouputStream.flush();  
+            ouputStream.close();  
+            response.flushBuffer();
+        } 
+			
+	}
+	
+	
+}

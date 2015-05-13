@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='CwebPersistenceCore'>
+  <source path='entity' />
+<<<<<<< .mine
+<!--   <source path='exception' /> -->
+<!--   <source path='beanmodel' /> -->
+=======
+  <source path='beanmodel' />
+>>>>>>> .r73
+</module>

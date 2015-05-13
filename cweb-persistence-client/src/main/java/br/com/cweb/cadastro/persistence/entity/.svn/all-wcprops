@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/cweb-repo-fnt/!svn/ver/469/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity
+END
+TipoConta.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/cweb-repo-fnt/!svn/ver/372/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/TipoConta.java
+END
+ArvoreFamiliar.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/cweb-repo-fnt/!svn/ver/163/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/ArvoreFamiliar.java
+END
+PessoaJuridica.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/PessoaJuridica.java
+END
+Cidade.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/cweb-repo-fnt/!svn/ver/185/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/Cidade.java
+END
+PessoaFisica.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/PessoaFisica.java
+END
+InstituicaoFinanceira.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/cweb-repo-fnt/!svn/ver/509/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/InstituicaoFinanceira.java
+END
+Estado.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/cweb-repo-fnt/!svn/ver/185/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/Estado.java
+END
+PerfilComissao.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/cweb-repo-fnt/!svn/ver/185/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/PerfilComissao.java
+END
+Convenio.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/431/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/Convenio.java
+END
+TipoEndereco.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/TipoEndereco.java
+END
+Atribuicao.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/cweb-repo-fnt/!svn/ver/185/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/Atribuicao.java
+END
+UsuarioLogadoDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/cweb-repo-fnt/!svn/ver/585/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/UsuarioLogadoDTO.java
+END
+Endereco.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/130/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/Endereco.java
+END
+PessoaFisicaJuridica.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/PessoaFisicaJuridica.java
+END
+ContaBancaria.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/ContaBancaria.java
+END
+TipoPessoa.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/TipoPessoa.java
+END
+TipoInstituicao.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/cweb-repo-fnt/!svn/ver/130/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/TipoInstituicao.java
+END
+Pessoa.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/cweb-repo-fnt/!svn/ver/196/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/entity/Pessoa.java
+END

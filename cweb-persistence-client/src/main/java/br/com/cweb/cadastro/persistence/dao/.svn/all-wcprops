@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/cweb-repo-fnt/!svn/ver/479/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao
+END
+InstituicaoFinanceiraDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/cweb-repo-fnt/!svn/ver/447/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/InstituicaoFinanceiraDAO.java
+END
+DadosBancariosDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/cweb-repo-fnt/!svn/ver/247/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/DadosBancariosDAO.java
+END
+EstadoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/cweb-repo-fnt/!svn/ver/478/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/EstadoDAO.java
+END
+PerfilComissaoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/PerfilComissaoDAO.java
+END
+ConvenioDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/463/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/ConvenioDAO.java
+END
+AtribuicaoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/cweb-repo-fnt/!svn/ver/479/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/AtribuicaoDAO.java
+END
+ArvoreFamiliarDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/cweb-repo-fnt/!svn/ver/196/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/ArvoreFamiliarDAO.java
+END
+EnderecoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/236/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/EnderecoDAO.java
+END
+PessoaFisicaJuridicaDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/PessoaFisicaJuridicaDAO.java
+END
+PessoaJuridicaDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/PessoaJuridicaDAO.java
+END
+CidadeDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/cweb-repo-fnt/!svn/ver/508/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/CidadeDAO.java
+END
+PessoaFisicaDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/PessoaFisicaDAO.java
+END
+PessoaDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/cweb-repo-fnt/!svn/ver/231/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/cadastro/persistence/dao/PessoaDAO.java
+END

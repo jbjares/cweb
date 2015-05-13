@@ -1,0 +1,1929 @@
+package br.com.cweb.view.cadastro.cadastrogeral.client.view;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import br.com.cweb.cadastro.persistence.entity.ArvoreFamiliar;
+import br.com.cweb.cadastro.persistence.entity.Atribuicao;
+import br.com.cweb.cadastro.persistence.entity.Cidade;
+import br.com.cweb.cadastro.persistence.entity.ContaBancaria;
+import br.com.cweb.cadastro.persistence.entity.Endereco;
+import br.com.cweb.cadastro.persistence.entity.Estado;
+import br.com.cweb.cadastro.persistence.entity.InstituicaoFinanceira;
+import br.com.cweb.cadastro.persistence.entity.PerfilComissao;
+import br.com.cweb.cadastro.persistence.entity.Pessoa;
+import br.com.cweb.cadastro.persistence.entity.PessoaFisica;
+import br.com.cweb.cadastro.persistence.entity.PessoaFisicaJuridica;
+import br.com.cweb.cadastro.persistence.entity.PessoaJuridica;
+import br.com.cweb.cadastro.persistence.entity.TipoConta;
+import br.com.cweb.cadastro.persistence.entity.TipoPessoa;
+import br.com.cweb.seguranca.persistence.entity.GrupoAcesso;
+import br.com.cweb.seguranca.persistence.entity.Usuario;
+import br.com.cweb.view.cadastro.cadastrogeral.client.i18n.CadastroGeralI18N;
+import br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacade;
+import br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacadeAsync;
+import br.com.cweb.view.template.client.TemplateCombosDependentes;
+import br.com.cweb.view.template.client.TemplateWindow;
+import br.com.cweb.widgets.build.BeanModelBuilder;
+import br.com.cweb.widgets.constants.Function;
+import br.com.cweb.widgets.textfield.TextFieldMask;
+
+import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
+import com.extjs.gxt.ui.client.data.BaseListLoader;
+import com.extjs.gxt.ui.client.data.BeanModel;
+import com.extjs.gxt.ui.client.data.BeanModelReader;
+import com.extjs.gxt.ui.client.data.ListLoader;
+import com.extjs.gxt.ui.client.data.ModelProcessor;
+import com.extjs.gxt.ui.client.data.RpcProxy;
+import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.Events;
+import com.extjs.gxt.ui.client.event.FieldEvent;
+import com.extjs.gxt.ui.client.event.Listener;
+import com.extjs.gxt.ui.client.event.MessageBoxEvent;
+import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.store.ListStore;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.MessageBox;
+import com.extjs.gxt.ui.client.widget.button.Button;
+import com.extjs.gxt.ui.client.widget.form.CheckBox;
+import com.extjs.gxt.ui.client.widget.form.CheckBoxGroup;
+import com.extjs.gxt.ui.client.widget.form.ComboBox;
+import com.extjs.gxt.ui.client.widget.form.FieldSet;
+import com.extjs.gxt.ui.client.widget.form.FormPanel;
+import com.extjs.gxt.ui.client.widget.form.LabelField;
+import com.extjs.gxt.ui.client.widget.form.ListModelPropertyEditor;
+import com.extjs.gxt.ui.client.widget.form.NumberField;
+import com.extjs.gxt.ui.client.widget.form.Radio;
+import com.extjs.gxt.ui.client.widget.form.RadioGroup;
+import com.extjs.gxt.ui.client.widget.form.SimpleComboBox;
+import com.extjs.gxt.ui.client.widget.form.TextField;
+import com.extjs.gxt.ui.client.widget.layout.AbsoluteData;
+import com.extjs.gxt.ui.client.widget.layout.AbsoluteLayout;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.NumberFormat;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
+public class IncluiAlteraCadastroGeralWindow extends TemplateWindow {
+	
+	private static final NumberFormat FORMATO_TELEFONE = NumberFormat.getFormat("##########");
+
+	ContentPanel contentpanelPrincipal = new ContentPanel();
+	LayoutContainer layoutContainerPrincipal = new LayoutContainer();
+	CadastroGeralServiceFacadeAsync service = GWT
+			.create(CadastroGeralServiceFacade.class);
+
+	private PessoaFisica pessoaFisica;
+	private PessoaJuridica pessoaJuridica;
+	private TextField textCodigo;
+	private TextField textSigla;
+	private TextField textNomeRazaoSocial;
+	private TextField textApelidoNomeFantasia;
+	private ComboBox<BeanModel> comboAtribuicao;
+	private Radio radioTipoPessoaFisica;
+	private Radio radioTipoPessoaJuridica;
+	private NumberField textCpfCnpj;
+	private TextField textEndereco;
+	private TextField textNumero;
+<<<<<<< .mine
+	private TextFieldMask textCep; 
+=======
+	private TextField textCep;
+>>>>>>> .r282
+	private TextField textBairro;
+	private ComboBox<BeanModel> comboEstados;
+	private ComboBox<BeanModel> comboCidades;
+	private TextField textEmail;
+	private NumberField textDddFax;
+	private NumberField textDddFoneFixo;
+	private NumberField textDddCelular;
+	private TextField textResponsavel;
+	private NumberField textDddTelefoneResponsvel;
+	private ComboBox<BeanModel> comboBancos;
+	private SimpleComboBox<TipoConta> comboTipoConta;
+	private TextField textAgencia;
+	private TextField textNumeroConta;
+	private TextField textFavorecido;
+	private TextField textCpfCnpjFavorecido;
+	private ComboBox<BeanModel> comboPerfilComissao;
+	private Radio bonificacaoSim;
+	private Radio bonificacaoNo;
+	private ComboBox<BeanModel> comboVinculacao;
+	private ComboBox<BeanModel> comboCpfCnpjVinculador;
+	private ComboBox<BeanModel> comboGrupoAcesso;
+	private Radio situacaoUsuarioLiberado;
+	private Radio situacaoUsuarioBloqueado;
+	private TextField textLogin;
+	private Radio situacaoPessoaAtiva;
+	private Radio situacaoPessoaInativa;
+	private LayoutContainer layoutContainerIdentificacao;
+	private LayoutContainer layoutContainerVinculacao;
+	private LayoutContainer layoutContainerControleAcesso;
+	private TextField textNomeVinculador;
+	private CheckBox checkgerarsenha;
+	private CheckBox chckbxChecksuperusuario;
+	private RadioGroup radiogroupsituacaopessoa;
+	private RadioGroup radiogrouptipopessoa;
+	private RadioGroup radiogrouppossuibonificacao;
+	private RadioGroup radiogroupsituacaousuario;
+	private CheckBoxGroup checkGerarCheckarSenha;
+
+	private ContaBancaria cadContaBancaria;
+	private Endereco cadEndereco;
+	private Usuario cadUsuario;
+	private String loginUpdate;
+
+	public IncluiAlteraCadastroGeralWindow(String header,
+			PessoaFisicaJuridica pessoaFisicaJuridica) {
+		setMinimizable(true);
+		setResizable(false);
+		setSize("882px", "654px");
+		setHeading(CadastroGeralI18N.constants.headingCadastroGeral() + " - "
+				+ header);
+
+		contentpanelPrincipal.setHeaderVisible(false);
+		contentpanelPrincipal.setButtonAlign(HorizontalAlignment.LEFT);
+		contentpanelPrincipal.setAutoWidth(true);
+		contentpanelPrincipal.setAutoHeight(true);
+
+		contentpanelPrincipal.add(doGetIdentificacao());
+		layoutContainerIdentificacao.setSize("864", "125");
+
+		contentpanelPrincipal.add(doGetContato());
+
+		contentpanelPrincipal.add(doGetDadosBancarios());
+
+		contentpanelPrincipal.add(doGetVinculacao());
+		layoutContainerVinculacao.setSize("864", "75");
+
+		contentpanelPrincipal.add(doGetControleAcesso());
+		layoutContainerControleAcesso.setSize("864", "75");
+
+		add(doGetPesquisa());
+		onClearForm();
+		criarDependenciaEntreEstadoEcomboCidade();
+		criarDependenciaEntreCombosVinculadorEcpfCnpj();
+		criarDependenciaEntreCombosAtribuicaoEVinculador();
+
+		if (pessoaFisicaJuridica != null) {
+			popularCamposAlteracao(pessoaFisicaJuridica);
+			loginUpdate = pessoaFisicaJuridica.getLogin();
+		}
+
+	}
+
+	private void popularCamposAlteracao(
+			final PessoaFisicaJuridica pessoaFisicaJuridica) {
+
+		/* load dos campos de indentificacao */
+		textCodigo.setValue(pessoaFisicaJuridica.getId());
+		textSigla.setValue(pessoaFisicaJuridica.getSiglaPessoaJuridica());
+		textApelidoNomeFantasia.setValue(pessoaFisicaJuridica
+				.getApelidoNomeFantasia());
+		textCpfCnpj.setValue(pessoaFisicaJuridica.getCpfCnpj());
+		textLogin.setValue(pessoaFisicaJuridica.getLogin());
+		textNomeRazaoSocial.setValue(pessoaFisicaJuridica.getNomeRazaoSocial());
+
+		if (pessoaFisicaJuridica.getPossuiCadastroPessoaAtivo()) {
+			situacaoPessoaAtiva.setValue(true);
+		} else {
+			situacaoPessoaInativa.setValue(true);
+		}
+
+		/* load dados contatos */
+
+		service.retornarPessoa(pessoaFisicaJuridica.getId(),
+				new AsyncCallback<Pessoa>() {
+
+					private Pessoa pessoa;
+
+					public void onFailure(Throwable caught) {
+						com.google.gwt.user.client.Window
+								.alert("Ocorreu um erro grave!"
+										+ " \nDetalhes:\n"
+										+ caught.getMessage());
+					}
+
+<<<<<<< .mine
+			public void onSuccess(Endereco endereco) {
+				this.endereco=endereco;
+				textBairro.setValue(endereco.getBairro());
+				textCep.setValue(endereco.getCep().toString());
+				textEmail.setValue(endereco.getEmail());
+				textEndereco.setValue(endereco.getEndereco());
+				textNumero.setValue(endereco.getNumero());
+				textDddFax.setValue(endereco.getFax());
+				textDddFoneFixo.setValue(endereco.getTelefoneFixo());
+				textDddCelular.setValue(endereco.getCelular());
+				textResponsavel.setValue(endereco.getNomeResponsavel());
+				textDddTelefoneResponsvel.setValue(endereco.getTelefoneResponsavel());
+			
+				BeanModel estadoBeanModel = BeanModelBuilder.buildBeanModel(endereco.getCidade().getEstado(), Estado.class);
+				comboEstados.getStore().add(estadoBeanModel);
+				comboEstados.setValue(estadoBeanModel);
+			    
+				BeanModel cidadeBeanModel = BeanModelBuilder.buildBeanModel(endereco.getCidade(), Cidade.class);
+				comboCidades.getStore().add(cidadeBeanModel);
+				comboCidades.setValue(cidadeBeanModel);
+				
+				cadEndereco = endereco;
+			}
+			
+		});
+		
+		service.recuperarDadosBancariosPoridPessoa(pessoaFisicaJuridica.getId(),new  AsyncCallback<ContaBancaria>() {
+			
+			private ContaBancaria conta;
+=======
+					public void onSuccess(Pessoa pessoa) {
+						this.pessoa = pessoa;
+>>>>>>> .r282
+
+						BeanModel atribuicaoBeanModel = BeanModelBuilder
+								.buildBeanModel(pessoa.getAtribuicao(),
+										Atribuicao.class);
+						comboAtribuicao.getStore().add(atribuicaoBeanModel);
+						comboAtribuicao.setValue(atribuicaoBeanModel);
+
+						BeanModel perfilComissaoBeanModel = BeanModelBuilder
+								.buildBeanModel(pessoa.getPerfilComissao(),
+										PerfilComissao.class);
+						comboPerfilComissao.getStore().add(
+								perfilComissaoBeanModel);
+						comboPerfilComissao.setValue(perfilComissaoBeanModel);
+
+						BeanModel vinculadoBeanModel = BeanModelBuilder
+								.buildBeanModel(pessoa.getPessoaVinculadora()
+										.getAtribuicao(), Atribuicao.class);
+						comboVinculacao.getStore().add(vinculadoBeanModel);
+						comboVinculacao.setValue(vinculadoBeanModel);
+
+						BeanModel pessoaFisicaJuridicaBeanModel = BeanModelBuilder
+								.buildBeanModel(pessoaFisicaJuridica,
+										PessoaFisicaJuridica.class);
+						comboCpfCnpjVinculador.getStore().add(
+								pessoaFisicaJuridicaBeanModel);
+						comboCpfCnpjVinculador
+								.setValue(pessoaFisicaJuridicaBeanModel);
+						comboCpfCnpjVinculador.setDisplayField("cpfCnpj");
+
+						String codigo = new Long((Long) comboCpfCnpjVinculador
+								.getValue().get("id")).toString();
+						String nome = (String) comboCpfCnpjVinculador
+								.getValue().get("nomeRazaoSocial");
+						textNomeVinculador.setValue(codigo + " - " + nome);
+
+						if (pessoa.getPossuiBonificacaoContratual()) {
+							bonificacaoSim.setValue(true);
+						} else {
+							bonificacaoNo.setValue(true);
+						}
+
+						if (pessoa.getTipoPessoa().equals(TipoPessoa.FISICA)) {
+							radioTipoPessoaFisica.setValue(true);
+						} else if (pessoa.getTipoPessoa().equals(
+								TipoPessoa.JURIDICA)) {
+							radioTipoPessoaJuridica.setValue(true);
+						}
+
+					}
+				});
+
+		service.recuperarEnderecoPoridPessoa(pessoaFisicaJuridica.getId(),
+				new AsyncCallback<Endereco>() {
+
+					private Endereco endereco;
+
+					public void onFailure(Throwable caught) {
+						com.google.gwt.user.client.Window
+								.alert("Ocorreu um erro grave!"
+										+ " \nDetalhes:\n"
+										+ caught.getMessage());
+					}
+
+					public void onSuccess(Endereco endereco) {
+						this.endereco = endereco;
+						textBairro.setValue(endereco.getBairro());
+						textCep.setValue(endereco.getCep());
+						textEmail.setValue(endereco.getEmail());
+						textEndereco.setValue(endereco.getEndereco());
+						textNumero.setValue(endereco.getNumero());
+						textDddFax.setValue(new Long(endereco.getFax()));
+						textDddFoneFixo.setValue(new Long(endereco.getTelefoneFixo()));
+						textDddCelular.setValue(new Long(endereco.getCelular()));
+						textResponsavel.setValue(endereco.getNomeResponsavel());
+						textDddTelefoneResponsvel.setValue(new Long(endereco
+								.getTelefoneResponsavel()));
+
+						BeanModel estadoBeanModel = BeanModelBuilder
+								.buildBeanModel(endereco.getCidade()
+										.getEstado(), Estado.class);
+						comboEstados.getStore().add(estadoBeanModel);
+						comboEstados.setValue(estadoBeanModel);
+
+						BeanModel cidadeBeanModel = BeanModelBuilder
+								.buildBeanModel(endereco.getCidade(),
+										Cidade.class);
+						comboCidades.getStore().add(cidadeBeanModel);
+						comboCidades.setValue(cidadeBeanModel);
+
+						cadEndereco = endereco;
+					}
+
+				});
+
+		service.recuperarDadosBancariosPoridPessoa(
+				pessoaFisicaJuridica.getId(),
+				new AsyncCallback<ContaBancaria>() {
+
+					private ContaBancaria conta;
+
+					public void onFailure(Throwable caught) {
+						com.google.gwt.user.client.Window
+								.alert("Ocorreu um erro grave!"
+										+ " \nDetalhes:\n"
+										+ caught.getMessage());
+					}
+
+					public void onSuccess(ContaBancaria conta) {
+						this.conta = conta;
+						textAgencia.setValue(conta.getAgencia());
+						textNumeroConta.setValue(conta.getConta());
+						textNumeroConta.setValue(conta.getNomeFavorecido());
+						textCpfCnpjFavorecido.setValue(conta
+								.getCpfCnpjFavorecido());
+						textFavorecido.setValue(conta.getNomeFavorecido());
+
+						BeanModel bancoBeanModel = BeanModelBuilder
+								.buildBeanModel(conta.getBanco(),
+										InstituicaoFinanceira.class);
+						comboBancos.getStore().add(bancoBeanModel);
+						comboBancos.setValue(bancoBeanModel);
+						comboTipoConta.setSimpleValue(conta.getTipoConta());
+
+						cadContaBancaria = conta;
+					}
+				});
+
+		service.recuperarUsuarioPoridPessoa(pessoaFisicaJuridica.getId(),
+				new AsyncCallback<Usuario>() {
+					private Usuario usuario;
+
+					public void onFailure(Throwable caught) {
+						com.google.gwt.user.client.Window
+								.alert("Ocorreu um erro grave!"
+										+ " \nDetalhes:\n"
+										+ caught.getMessage());
+					}
+
+					public void onSuccess(Usuario usuario) {
+						this.usuario = usuario;
+
+						BeanModel grupoAcessoBeanModel = BeanModelBuilder
+								.buildBeanModel(usuario.getGupoAcesso(),
+										GrupoAcesso.class);
+						comboGrupoAcesso.getStore().add(grupoAcessoBeanModel);
+						comboGrupoAcesso.setValue(grupoAcessoBeanModel);
+
+						if (usuario.getPossuiCadastroAtivo()) {
+							situacaoUsuarioLiberado.setValue(true);
+						} else {
+							situacaoUsuarioBloqueado.setValue(true);
+						}
+						cadUsuario = usuario;
+					}
+				});
+	}
+
+	private void criarDependenciaEntreCombosAtribuicaoEVinculador() {
+		TemplateCombosDependentes combosDependentes = new TemplateCombosDependentes() {
+			@Override
+			protected void load(ComboBox<?> fonte, final ComboBox<?> cb) {
+
+				final Integer codigoHierarquico = fonte.getValue().get(
+						"codigoHierarquico");
+				RpcProxy proxyVinculacao = new RpcProxy() {
+
+					@Override
+					protected void load(Object loadConfig,
+							AsyncCallback callback) {
+						service.retornaListaAtribuicaoVinculador(
+								codigoHierarquico, callback);
+					}
+
+				};
+
+				BeanModelReader readerAtribuicao = new BeanModelReader();
+				ListLoader loaderAtribuicao = new BaseListLoader(
+						proxyVinculacao, readerAtribuicao);
+				ListStore<BeanModel> storeAtribuicao = new ListStore<BeanModel>(
+						loaderAtribuicao);
+				loaderAtribuicao.load();
+				comboVinculacao.getStore().removeAll();
+				comboVinculacao.setStore(storeAtribuicao);
+
+			}
+		};
+
+		combosDependentes.adicionarCombo(comboAtribuicao);
+		combosDependentes.adicionarCombo(comboVinculacao);
+		combosDependentes.init();
+	}
+
+	private void criarDependenciaEntreCombosVinculadorEcpfCnpj() {
+		TemplateCombosDependentes combosDependentes = new TemplateCombosDependentes() {
+			@Override
+			protected void load(ComboBox<?> fonte, final ComboBox<?> cb) {
+
+				final Long id = fonte.getValue().get("id");
+				RpcProxy proxyVinculacao = new RpcProxy() {
+
+					@Override
+					protected void load(Object loadConfig,
+							AsyncCallback callback) {
+						service.retornaListarCpfCnpjPessoaPorTipoVinculacao(id,
+								callback);
+					}
+
+				};
+
+				BeanModelReader readerCpfCnpjVinculacao = new BeanModelReader();
+				ListLoader loaderCpfCnpjVinculacao = new BaseListLoader(
+						proxyVinculacao, readerCpfCnpjVinculacao);
+				ListStore<BeanModel> storeCpfCnpjVinculacao = new ListStore<BeanModel>(
+						loaderCpfCnpjVinculacao);
+				loaderCpfCnpjVinculacao.load();
+				comboCpfCnpjVinculador.getStore().removeAll();
+				comboCpfCnpjVinculador.setStore(storeCpfCnpjVinculacao);
+
+			}
+		};
+
+		combosDependentes.adicionarCombo(comboVinculacao);
+		combosDependentes.adicionarCombo(comboCpfCnpjVinculador);
+		combosDependentes.init();
+	}
+
+	private void criarDependenciaEntreEstadoEcomboCidade() {
+		TemplateCombosDependentes combosDependentes = new TemplateCombosDependentes() {
+			@Override
+			protected void load(ComboBox<?> fonte, final ComboBox<?> cb) {
+
+				final Long idEstado = fonte.getValue().get("id");
+				RpcProxy proxyVinculacao = new RpcProxy() {
+
+					@Override
+					protected void load(Object loadConfig,
+							AsyncCallback callback) {
+						service.retornaListaCidadesPorEstado(idEstado, callback);
+					}
+
+				};
+
+				BeanModelReader readerCidades = new BeanModelReader();
+				ListLoader loaderCidades = new BaseListLoader(proxyVinculacao,
+						readerCidades);
+				ListStore<BeanModel> storeCidades = new ListStore<BeanModel>(
+						loaderCidades);
+				loaderCidades.load();
+				comboCidades.getStore().removeAll();
+				comboCidades.setStore(storeCidades);
+				comboCidades.setAllowBlank(false);
+			}
+		};
+
+		combosDependentes.adicionarCombo(comboEstados);
+		combosDependentes.adicionarCombo(comboCidades);
+		combosDependentes.init();
+	}
+
+	protected LayoutContainer doGetIdentificacao() {
+
+		layoutContainerIdentificacao = new LayoutContainer();
+		layoutContainerIdentificacao.setId("id_LayoutContainerIdentificacao");
+
+		FieldSet fieldsetIdentificacao = new FieldSet();
+		fieldsetIdentificacao.setId("id_FieldsetIdentificacao");
+		fieldsetIdentificacao.setAutoWidth(true);
+		fieldsetIdentificacao.setLayout(new AbsoluteLayout());
+
+		LabelField labelCodigo = new LabelField(
+				CadastroGeralI18N.constants.codigo());
+		labelCodigo.setId("id_LabelCodigo");
+		fieldsetIdentificacao.add(labelCodigo, new AbsoluteData(0, 0));
+		textCodigo = new TextField();
+		textCodigo.setId("id_TextCodigo");
+		textCodigo.setReadOnly(true);
+		textCodigo.setName("codigo");
+		textCodigo.setId("codigo");
+		textCodigo.setToolTip(CadastroGeralI18N.tooltip.identificadorPessoa());
+		fieldsetIdentificacao.add(textCodigo, new AbsoluteData(0, 17));
+
+		LabelField labealSigla = new LabelField(
+				CadastroGeralI18N.constants.sigla());
+		labealSigla.setId("id_LabealSigla");
+		fieldsetIdentificacao.add(labealSigla, new AbsoluteData(0, 45));
+		textSigla = new TextField();
+		textSigla.setId("id_TextSigla");
+		textSigla.setName("sigla");
+		textSigla.setId("sigla");
+		textSigla.setToolTip(CadastroGeralI18N.tooltip.descricaoSigla());
+		textSigla.setAllowBlank(false);
+		textSigla.setMaxLength(5);
+		fieldsetIdentificacao.add(textSigla, new AbsoluteData(0, 62));
+
+		LabelField labelAtribuicao = new LabelField(
+				CadastroGeralI18N.constants.atribuicao());
+		labelAtribuicao.setId("id_LabelAtribuicao");
+		fieldsetIdentificacao.add(labelAtribuicao, new AbsoluteData(178, 0));
+
+		RpcProxy proxyAtribuicao = new RpcProxy() {
+
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				service.retornaListaAtribuicao(callback);
+			}
+		};
+
+		BeanModelReader readerAtribuicao = new BeanModelReader();
+		ListLoader loaderAtribuicao = new BaseListLoader(proxyAtribuicao,
+				readerAtribuicao);
+		ListStore<BeanModel> storeUnidadeCargo = new ListStore<BeanModel>(
+				loaderAtribuicao);
+
+		comboAtribuicao = new ComboBox();
+		comboAtribuicao.setId("id_ComboAtribuicao");
+		comboAtribuicao.setStore(storeUnidadeCargo);
+		fieldsetIdentificacao.add(comboAtribuicao, new AbsoluteData(178, 17));
+		comboAtribuicao.setToolTip(CadastroGeralI18N.tooltip
+				.identificadorAtibuicaoPessoa());
+		comboAtribuicao.setAllowBlank(false);
+		comboAtribuicao.setSize("238px", "22px");
+		comboAtribuicao.setDisplayField("nome");
+
+		comboAtribuicao.addListener(Events.Blur, new Listener<FieldEvent>() {
+			public void handleEvent(FieldEvent e) {
+				Object comboAtribuicaoValue = comboAtribuicao.getValue();
+				if (comboAtribuicaoValue == null) {
+					comboCpfCnpjVinculador.clear();
+					textNomeVinculador.setValue("");
+					comboCpfCnpjVinculador.setEnabled(false);
+					comboVinculacao.clear();
+					comboVinculacao.setEnabled(false);
+				} else {
+					comboCpfCnpjVinculador.setEnabled(true);
+					comboVinculacao.setEnabled(true);
+				}
+			}
+		});
+
+		comboAtribuicao.addListener(Events.Select, new Listener<FieldEvent>() {
+			public void handleEvent(FieldEvent e) {
+				comboCpfCnpjVinculador.clear();
+				textNomeVinculador.setValue("");
+				comboCpfCnpjVinculador.setEnabled(false);
+			}
+		});
+
+		LabelField labelTipoPessoa = new LabelField(
+				CadastroGeralI18N.constants.tipoPessoa());
+		labelTipoPessoa.setId("id_LabelTipoPessoa");
+		fieldsetIdentificacao.add(labelTipoPessoa, new AbsoluteData(711, 45));
+		setToolTip(CadastroGeralI18N.tooltip.pessoaTipoJuridica());
+
+		LabelField labelCpfcnpj = new LabelField(
+				CadastroGeralI18N.constants.cpfCnpj());
+		labelCpfcnpj.setId("id_LabelCpfcnpj");
+		fieldsetIdentificacao.add(labelCpfcnpj, new AbsoluteData(178, 45));
+
+		textCpfCnpj = new NumberField();
+		textCpfCnpj.setId("id_TextCpfCnpj");
+		textCpfCnpj.getPropertyEditor().setType(Long.class);
+		textCpfCnpj.setAllowDecimals(false);
+		textCpfCnpj.setAllowNegative(false);
+		textCpfCnpj.setToolTip(CadastroGeralI18N.tooltip.cpfCnpjPessoa());
+		textCpfCnpj.setAllowBlank(false);
+		fieldsetIdentificacao.add(textCpfCnpj, new AbsoluteData(178, 62));
+		textCpfCnpj.setSize("238px", "22px");
+
+		LabelField labelSituacao = new LabelField(
+				CadastroGeralI18N.constants.situacao());
+		labelSituacao.setId("id_LabelSituacao");
+		fieldsetIdentificacao.add(labelSituacao, new AbsoluteData(712, 0));
+
+		LabelField labelNomeRazoSocial = new LabelField(
+				CadastroGeralI18N.constants.nomeRazaoSocial());
+		labelNomeRazoSocial.setId("id_LabelNomeRazoSocial");
+		fieldsetIdentificacao
+				.add(labelNomeRazoSocial, new AbsoluteData(446, 0));
+
+		textNomeRazaoSocial = new TextField();
+		textNomeRazaoSocial.setId("id_TextNomeRazaoSocial");
+		fieldsetIdentificacao.add(textNomeRazaoSocial,
+				new AbsoluteData(446, 17));
+		textNomeRazaoSocial.setToolTip(CadastroGeralI18N.tooltip
+				.nomeRazaoSocial());
+		textNomeRazaoSocial.setAllowBlank(false);
+		textNomeRazaoSocial.setMaxLength(50);
+		textNomeRazaoSocial.setSize("238px", "22px");
+
+		LabelField labelApelidoNomeFantasia = new LabelField(
+				CadastroGeralI18N.constants.apelidoNomeFantasia());
+		labelApelidoNomeFantasia.setId("id_LabelApelidoNomeFantasia");
+		fieldsetIdentificacao.add(labelApelidoNomeFantasia, new AbsoluteData(
+				446, 45));
+
+		textApelidoNomeFantasia = new TextField();
+		textApelidoNomeFantasia.setId("id_TextApelidoNomeFantasia");
+		textApelidoNomeFantasia.setToolTip(CadastroGeralI18N.tooltip
+				.apelidoNomeFantasia());
+		textApelidoNomeFantasia.setAllowBlank(false);
+		textApelidoNomeFantasia.setMaxLength(50);
+		textApelidoNomeFantasia.setSize("238px", "22px");
+		fieldsetIdentificacao.add(textApelidoNomeFantasia, new AbsoluteData(
+				446, 62));
+
+		radiogroupsituacaopessoa = new RadioGroup();
+		radiogroupsituacaopessoa.setId("id_Radiogroupsituacaopessoa");
+		radiogroupsituacaopessoa.setSelectionRequired(true);
+
+		situacaoPessoaAtiva = new Radio();
+		situacaoPessoaAtiva.setId("id_SituacaoPessoaAtiva");
+		radiogroupsituacaopessoa.add(situacaoPessoaAtiva);
+		situacaoPessoaAtiva.setBoxLabel(CadastroGeralI18N.constants
+				.situacaoAtiva());
+		situacaoPessoaAtiva.setToolTip(CadastroGeralI18N.tooltip.ativa());
+		situacaoPessoaAtiva.setHideLabel(true);
+		situacaoPessoaAtiva.setValue(true);
+		situacaoPessoaAtiva.setAutoValidate(true);
+
+		situacaoPessoaInativa = new Radio();
+		situacaoPessoaInativa.setId("id_SituacaoPessoaInativa");
+		radiogroupsituacaopessoa.add(situacaoPessoaInativa);
+		situacaoPessoaInativa.setBoxLabel(CadastroGeralI18N.constants
+				.situacaoInativa());
+		situacaoPessoaInativa.setToolTip(CadastroGeralI18N.tooltip.inativa());
+		situacaoPessoaInativa.setHideLabel(true);
+		fieldsetIdentificacao.add(radiogroupsituacaopessoa, new AbsoluteData(
+				713, 17));
+		radiogroupsituacaopessoa.setFieldLabel("radioGroupSituacaoPessoa");
+
+		radiogrouptipopessoa = new RadioGroup();
+		radiogrouptipopessoa.setId("id_Radiogrouptipopessoa");
+		radiogrouptipopessoa.setSelectionRequired(true);
+
+		radioTipoPessoaFisica = new Radio();
+		radioTipoPessoaFisica.setId("id_RadioTipoPessoaFisica");
+		radiogrouptipopessoa.add(radioTipoPessoaFisica);
+		radioTipoPessoaFisica.setToolTip(CadastroGeralI18N.tooltip
+				.pessoaTipoFisica());
+		radioTipoPessoaFisica.setBoxLabel(CadastroGeralI18N.constants
+				.pessoaFisica());
+		radioTipoPessoaFisica.setHideLabel(true);
+
+		radioTipoPessoaJuridica = new Radio();
+		radioTipoPessoaJuridica.setId("id_RadioTipoPessoaJuridica");
+		radioTipoPessoaJuridica.setValue(new Boolean(true));
+		radiogrouptipopessoa.add(radioTipoPessoaJuridica);
+		radioTipoPessoaJuridica.setBoxLabel(CadastroGeralI18N.constants
+				.pessoaJuridica());
+		radioTipoPessoaJuridica.setHideLabel(true);
+
+		fieldsetIdentificacao.add(radiogrouptipopessoa, new AbsoluteData(711,
+				62));
+		radiogrouptipopessoa.setFieldLabel("radioGroupTipoPessoa");
+
+		LayoutContainer layoutContainerespacoCima = new LayoutContainer();
+		layoutContainerespacoCima.setId("id_LayoutContainerespacoCima");
+		layoutContainerIdentificacao.add(layoutContainerespacoCima);
+		layoutContainerespacoCima.setSize("864", "10");
+		layoutContainerIdentificacao.add(fieldsetIdentificacao);
+		fieldsetIdentificacao.setSize("862", "115");
+		fieldsetIdentificacao.setHeading(CadastroGeralI18N.constants
+				.identificacao());
+
+		return layoutContainerIdentificacao;
+	}
+
+	protected LayoutContainer doGetContato() {
+
+		LayoutContainer layoutContainerContato = new LayoutContainer();
+		layoutContainerContato.setId("id_LayoutContainerContato");
+
+		FieldSet fieldDadosDeContato = new FieldSet();
+		fieldDadosDeContato.setId("id_FieldDadosDeContato");
+		fieldDadosDeContato.setLayout(new AbsoluteLayout());
+
+		LabelField labelEndereo = new LabelField(
+				CadastroGeralI18N.constants.endereco());
+		labelEndereo.setId("id_LabelEndereo");
+		fieldDadosDeContato.add(labelEndereo, new AbsoluteData(0, 0));
+
+		textEndereco = new TextField();
+		textEndereco.setId("id_TextEndereco");
+		textEndereco.setToolTip(CadastroGeralI18N.tooltip.endereco());
+		textEndereco.setAllowBlank(false);
+		textEndereco.setMaxLength(50);
+		textEndereco.setSize("185px", "22px");
+		fieldDadosDeContato.add(textEndereco, new AbsoluteData(0, 16));
+
+		LabelField labelNmero = new LabelField(
+				CadastroGeralI18N.constants.numero());
+		labelNmero.setId("id_LabelNmero");
+		fieldDadosDeContato.add(labelNmero, new AbsoluteData(0, 44));
+
+		textNumero = new TextField();
+		textNumero.setId("id_TextNumero");
+		textNumero.setToolTip(CadastroGeralI18N.tooltip.numero());
+		textNumero.setAllowBlank(false);
+		textNumero.setMaxLength(5);
+
+		fieldDadosDeContato.add(textNumero, new AbsoluteData(0, 60));
+		textNumero.setSize("185px", "22px");
+
+		LabelField labelCep = new LabelField(CadastroGeralI18N.constants.cep());
+		labelCep.setId("id_LabelCep");
+		fieldDadosDeContato.add(labelCep, new AbsoluteData(0, 88));
+
+		textCep = new TextFieldMask(CadastroGeralI18N.mask.cep());
+		textCep.setId("id_TextCep");
+		textCep.setToolTip(CadastroGeralI18N.tooltip.cep());
+		textCep.setAllowBlank(false);
+<<<<<<< .mine
+=======
+
+>>>>>>> .r282
+		fieldDadosDeContato.add(textCep, new AbsoluteData(0, 103));
+		textCep.setSize("185px", "22px");
+
+		LabelField labelBairro = new LabelField(
+				CadastroGeralI18N.constants.bairro());
+		labelBairro.setId("id_LabelBairro");
+		fieldDadosDeContato.add(labelBairro, new AbsoluteData(212, 0));
+
+		textBairro = new TextField();
+		textBairro.setId("id_TextBairro");
+		textBairro.setToolTip(CadastroGeralI18N.tooltip.bairro());
+		textBairro.setSize("206px", "22px");
+		textBairro.setAllowBlank(false);
+		textBairro.setMaxLength(15);
+		fieldDadosDeContato.add(textBairro, new AbsoluteData(212, 16));
+
+		LabelField labelEstado = new LabelField(
+				CadastroGeralI18N.constants.estado());
+		labelEstado.setId("id_LabelEstado");
+		fieldDadosDeContato.add(labelEstado, new AbsoluteData(212, 44));
+
+		RpcProxy proxy = new RpcProxy() {
+
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				service.retornaListaEstados(callback);
+			}
+		};
+
+		BeanModelReader reader = new BeanModelReader();
+		ListLoader loader = new BaseListLoader(proxy, reader);
+		ListStore<BeanModel> store = new ListStore<BeanModel>(loader);
+		comboEstados = new ComboBox<BeanModel>();
+		comboEstados.setId("id_ComboEstados");
+		comboEstados.setSize("206px", "22px");
+		comboEstados.setToolTip(CadastroGeralI18N.tooltip.estado());
+		comboEstados.setAllowBlank(false);
+		comboEstados.setDisplayField("nome");
+		comboEstados.setStore(store);
+
+		fieldDadosDeContato.add(comboEstados, new AbsoluteData(212, 60));
+
+		LabelField labelCidade = new LabelField(
+				CadastroGeralI18N.constants.cidade());
+		labelCidade.setId("id_LabelCidade");
+		fieldDadosDeContato.add(labelCidade, new AbsoluteData(212, 88));
+
+		RpcProxy proxyCidades = new RpcProxy() {
+
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				service.retornaListaCidades(callback);
+			}
+		};
+
+		BeanModelReader readerCidades = new BeanModelReader();
+		ListLoader loaderCidades = new BaseListLoader(proxyCidades,
+				readerCidades);
+		ListStore<BeanModel> storeCidades = new ListStore<BeanModel>(
+				loaderCidades);
+
+		comboCidades = new ComboBox<BeanModel>();
+		comboCidades.setId("id_ComboCidades");
+		comboCidades.setStore(storeCidades);
+		fieldDadosDeContato.add(comboCidades, new AbsoluteData(212, 103));
+		comboCidades.setSize("206px", "22px");
+		comboCidades.setToolTip(CadastroGeralI18N.tooltip.cidade());
+		comboCidades.setAllowBlank(false);
+		comboCidades.setDisplayField("nome");
+
+		LabelField labelEmail = new LabelField(
+				CadastroGeralI18N.constants.email());
+		labelEmail.setId("id_LabelEmail");
+		fieldDadosDeContato.add(labelEmail, new AbsoluteData(446, 0));
+
+		textEmail = new TextField();
+		textEmail.setId("id_TextEmail");
+		textEmail.setToolTip(CadastroGeralI18N.tooltip.email());
+		textEmail.setAllowBlank(false);
+		textEmail.setMaxLength(30);
+		fieldDadosDeContato.add(textEmail, new AbsoluteData(446, 16));
+
+		LabelField labelDddFax = new LabelField(
+				CadastroGeralI18N.constants.emailDDFax());
+		labelDddFax.setId("id_LabelDddFax");
+		fieldDadosDeContato.add(labelDddFax, new AbsoluteData(446, 44));
+
+		textDddFax = new NumberField();
+		textDddFax.setId("id_TextDddFax");
+		textDddFax.getPropertyEditor().setType(Long.class);
+		textDddFax.getPropertyEditor().setFormat(FORMATO_TELEFONE);
+		textDddFax.setMaxLength(10);
+		textDddFax.setAllowDecimals(false);
+		textDddFax.setAllowNegative(false);
+		textDddFax.setToolTip(CadastroGeralI18N.tooltip.fax());
+		textDddFax.setAllowBlank(false);
+
+		fieldDadosDeContato.add(textDddFax, new AbsoluteData(446, 60));
+
+		LabelField labelDddFoneFixo = new LabelField(
+				CadastroGeralI18N.constants.emailDDTelefoneFixo());
+		labelDddFoneFixo.setId("id_LabelDddFoneFixo");
+		fieldDadosDeContato.add(labelDddFoneFixo, new AbsoluteData(446, 88));
+
+		textDddFoneFixo = new NumberField();
+		textDddFoneFixo.setId("id_TextDddFoneFixo");
+		textDddFoneFixo.getPropertyEditor().setType(Long.class);
+		textDddFoneFixo.getPropertyEditor().setFormat(FORMATO_TELEFONE);
+		textDddFoneFixo.setMaxLength(10);
+		textDddFoneFixo.setAllowDecimals(false);
+		textDddFoneFixo.setAllowNegative(false);
+		textDddFoneFixo.setToolTip(CadastroGeralI18N.tooltip.foneFixo());
+		textDddFoneFixo.setAllowBlank(false);
+		fieldDadosDeContato.add(textDddFoneFixo, new AbsoluteData(446, 103));
+
+		LabelField labelDddCelular = new LabelField(
+				CadastroGeralI18N.constants.dddCelular());
+		labelDddCelular.setId("id_LabelDddCelular");
+		fieldDadosDeContato.add(labelDddCelular, new AbsoluteData(627, 0));
+
+		textDddCelular = new NumberField();
+		textDddCelular.setId("id_TextDddCelular");
+		textDddCelular.getPropertyEditor().setType(Long.class);
+		textDddCelular.getPropertyEditor().setFormat(FORMATO_TELEFONE);
+		textDddCelular.setMaxLength(10);
+		textDddCelular.setAllowDecimals(false);
+		textDddCelular.setAllowNegative(false);
+		textDddCelular.setToolTip(CadastroGeralI18N.tooltip.celular());
+		fieldDadosDeContato.add(textDddCelular, new AbsoluteData(627, 16));
+		textDddCelular.setAllowBlank(false);
+		textDddCelular.setSize("196px", "22px");
+
+		LabelField labelResponsvel = new LabelField(
+				CadastroGeralI18N.constants.responsavel());
+		labelResponsvel.setId("id_LabelResponsvel");
+		fieldDadosDeContato.add(labelResponsvel, new AbsoluteData(627, 44));
+
+		textResponsavel = new TextField();
+		textResponsavel.setId("id_TextResponsavel");
+		textResponsavel.setToolTip(CadastroGeralI18N.tooltip.responsavel());
+		textResponsavel.setAllowBlank(false);
+		textResponsavel.setMaxLength(20);
+		textResponsavel.setSize("196px", "22px");
+		fieldDadosDeContato.add(textResponsavel, new AbsoluteData(627, 60));
+
+		LabelField labelDddTelefoneResponsvel = new LabelField(
+				CadastroGeralI18N.constants.dddTelefoneResponsavel());
+		labelDddTelefoneResponsvel.setId("id_LabelDddTelefoneResponsvel");
+		fieldDadosDeContato.add(labelDddTelefoneResponsvel, new AbsoluteData(
+				627, 86));
+
+		textDddTelefoneResponsvel = new NumberField();
+		textDddTelefoneResponsvel.setId("id_TextDddTelefoneResponsvel");
+		textDddTelefoneResponsvel.getPropertyEditor().setType(Long.class);
+		textDddTelefoneResponsvel.getPropertyEditor().setFormat(FORMATO_TELEFONE);
+		textDddTelefoneResponsvel.setMaxLength(10);
+		textDddTelefoneResponsvel.setAllowDecimals(false);
+		textDddTelefoneResponsvel.setAllowNegative(false);
+		textDddTelefoneResponsvel.setToolTip(CadastroGeralI18N.tooltip
+				.telefoneResponsavel());
+		textDddTelefoneResponsvel.setSize("196px", "22px");
+		textDddTelefoneResponsvel.setAllowBlank(false);
+		fieldDadosDeContato.add(textDddTelefoneResponsvel, new AbsoluteData(
+				627, 103));
+
+		layoutContainerContato.add(fieldDadosDeContato);
+		fieldDadosDeContato.setSize("864", "165");
+		fieldDadosDeContato.setHeading(CadastroGeralI18N.constants
+				.dadosContatos());
+		layoutContainerContato.setSize("864", "170");
+		return layoutContainerContato;
+	}
+
+	protected LayoutContainer doGetDadosBancarios() {
+
+		LayoutContainer layoutContainerDadosBancarios = new LayoutContainer();
+		layoutContainerDadosBancarios.setId("id_LayoutContainerDadosBancarios");
+
+		FieldSet fieldsetDadosBancarios = new FieldSet();
+		fieldsetDadosBancarios.setId("id_FieldsetDadosBancarios");
+		fieldsetDadosBancarios.setLayout(new AbsoluteLayout());
+
+		LabelField labelBanco = new LabelField(
+				CadastroGeralI18N.constants.banco());
+		labelBanco.setId("id_LabelBanco");
+		fieldsetDadosBancarios.add(labelBanco, new AbsoluteData(0, 0));
+
+		RpcProxy proxyBancos = new RpcProxy() {
+
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				service.retornaListaBancos(callback);
+			}
+		};
+
+		BeanModelReader readerBancos = new BeanModelReader();
+		ListLoader loaderBancos = new BaseListLoader(proxyBancos, readerBancos);
+		ListStore<BeanModel> storeBancos = new ListStore<BeanModel>(
+				loaderBancos);
+
+		comboBancos = new ComboBox();
+		comboBancos.setId("id_ComboBancos");
+
+		final String TEXTO_COMBO_BANCO = "textoComboBanco";
+		
+		comboBancos.setPropertyEditor(new ListModelPropertyEditor<BeanModel>() {
+			public String getStringValue(BeanModel value) {
+				InstituicaoFinanceira instituicaoFinanceira = (InstituicaoFinanceira) value
+						.getBean();
+				return instituicaoFinanceira.getId() + " - "
+						+ instituicaoFinanceira.getNome();
+			}
+		});
+
+		comboBancos.getView().setModelProcessor(
+				new ModelProcessor<BeanModel>() {
+					@Override
+					public BeanModel prepareData(BeanModel model) {
+						InstituicaoFinanceira instituicaoFinanceira = (InstituicaoFinanceira) model
+								.getBean();
+						model.set(TEXTO_COMBO_BANCO,
+								instituicaoFinanceira.getId() + " - "
+										+ instituicaoFinanceira.getNome());
+
+						return model;
+					}
+				});
+
+		comboBancos.setDisplayField(TEXTO_COMBO_BANCO);
+
+		comboBancos.setStore(storeBancos);
+		comboBancos.setToolTip(CadastroGeralI18N.tooltip.bancos());
+		comboBancos.setSize("184px", "22px");
+		comboBancos.setAllowBlank(false);
+		fieldsetDadosBancarios.add(comboBancos, new AbsoluteData(0, 15));
+
+		LabelField labelTipoConta = new LabelField(
+				CadastroGeralI18N.constants.tipoConta());
+		labelTipoConta.setId("id_LabelTipoConta");
+		fieldsetDadosBancarios.add(labelTipoConta, new AbsoluteData(0, 43));
+
+		comboTipoConta = new SimpleComboBox();
+		comboTipoConta.setId("id_ComboTipoConta");
+		comboTipoConta.add(Arrays.asList(TipoConta.values()));
+		comboTipoConta.setToolTip(CadastroGeralI18N.tooltip.tipoConta());
+		comboTipoConta.setSize("184px", "22px");
+		comboTipoConta.setAllowBlank(false);
+		fieldsetDadosBancarios.add(comboTipoConta, new AbsoluteData(0, 59));
+
+		LabelField labelAgencia = new LabelField(
+				CadastroGeralI18N.constants.agencia());
+		labelAgencia.setId("id_LabelAgencia");
+		fieldsetDadosBancarios.add(labelAgencia, new AbsoluteData(214, 0));
+		textAgencia = new TextField();
+		textAgencia.setId("id_TextAgencia");
+		textAgencia.setToolTip(CadastroGeralI18N.tooltip.agencia());
+		textAgencia.setAllowBlank(false);
+		textAgencia.setMaxLength(30);
+		fieldsetDadosBancarios.add(textAgencia, new AbsoluteData(214, 15));
+
+		LabelField labelNmeroDaConta = new LabelField(
+				CadastroGeralI18N.constants.numeroConta());
+		labelNmeroDaConta.setId("id_LabelNmeroDaConta");
+		fieldsetDadosBancarios
+				.add(labelNmeroDaConta, new AbsoluteData(214, 43));
+		textNumeroConta = new TextField();
+		textNumeroConta.setId("id_TextNumeroConta");
+		textNumeroConta.setToolTip(CadastroGeralI18N.tooltip.numeroConta());
+		textNumeroConta.setAllowBlank(false);
+		textNumeroConta.setMaxLength(5);
+		fieldsetDadosBancarios.add(textNumeroConta, new AbsoluteData(214, 59));
+
+		LabelField labelFavorecido = new LabelField(
+				CadastroGeralI18N.constants.favorecido());
+		labelFavorecido.setId("id_LabelFavorecido");
+		fieldsetDadosBancarios.add(labelFavorecido, new AbsoluteData(391, 0));
+		textFavorecido = new TextField();
+		textFavorecido.setId("id_TextFavorecido");
+		textFavorecido.setTitle(CadastroGeralI18N.tooltip.favorecido());
+		textFavorecido.setAllowBlank(false);
+		textFavorecido.setMaxLength(20);
+		textFavorecido.setSize("234px", "22px");
+		fieldsetDadosBancarios.add(textFavorecido, new AbsoluteData(391, 15));
+
+		LabelField labelCpfCnpjFavorecido = new LabelField(
+				CadastroGeralI18N.constants.cpfCnpjFavorecido());
+		labelCpfCnpjFavorecido.setId("id_LabelCpfCnpjFavorecido");
+		fieldsetDadosBancarios.add(labelCpfCnpjFavorecido, new AbsoluteData(
+				391, 41));
+		textCpfCnpjFavorecido = new TextField();
+		textCpfCnpjFavorecido.setId("id_TextCpfCnpjFavorecido");
+		textCpfCnpjFavorecido.setToolTip(CadastroGeralI18N.tooltip
+				.cpfCnpjFavorecido());		
+		textCpfCnpjFavorecido.setAllowBlank(false);
+		textCpfCnpjFavorecido.setSize("234px", "22px");
+		fieldsetDadosBancarios.add(textCpfCnpjFavorecido, new AbsoluteData(391,
+				59));
+
+		LabelField labelPerfilDeComisso = new LabelField(
+				CadastroGeralI18N.constants.perfilComissao());
+		labelPerfilDeComisso.setId("id_LabelPerfilDeComisso");
+		fieldsetDadosBancarios.add(labelPerfilDeComisso, new AbsoluteData(655,
+				-2));
+
+		RpcProxy proxyPerfilComissao = new RpcProxy() {
+
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				service.retornaListaPerfilComissao(callback);
+			}
+		};
+
+		BeanModelReader readerPerfilComissao = new BeanModelReader();
+		ListLoader loaderPerfilComissao = new BaseListLoader(
+				proxyPerfilComissao, readerPerfilComissao);
+		ListStore<BeanModel> storePerfilComissao = new ListStore<BeanModel>(
+				loaderPerfilComissao);
+
+		comboPerfilComissao = new ComboBox();
+		comboPerfilComissao.setId("id_ComboPerfilComissao");
+		comboPerfilComissao.setStore(storePerfilComissao);
+		comboPerfilComissao.setToolTip(CadastroGeralI18N.tooltip
+				.perfilComissao());
+		comboPerfilComissao.setSize("167px", "22px");
+		comboPerfilComissao.setDisplayField("nome");
+		comboPerfilComissao.setAllowBlank(false);
+		fieldsetDadosBancarios.add(comboPerfilComissao, new AbsoluteData(655,
+				15));
+
+		LabelField labelBonificacao = new LabelField(
+				CadastroGeralI18N.constants.bonificacaoContrato());
+		labelBonificacao.setId("id_LabelBonificacao");
+		fieldsetDadosBancarios.add(labelBonificacao, new AbsoluteData(655, 41));
+
+		radiogrouppossuibonificacao = new RadioGroup();
+		radiogrouppossuibonificacao.setId("id_Radiogrouppossuibonificacao");
+		radiogrouppossuibonificacao.setSelectionRequired(true);
+
+		bonificacaoSim = new Radio();
+		bonificacaoSim.setId("id_BonificacaoSim");
+		radiogrouppossuibonificacao.add(bonificacaoSim);
+		bonificacaoSim.setBoxLabel(CadastroGeralI18N.constants.sim());
+		bonificacaoSim.setToolTip(CadastroGeralI18N.tooltip.bonificacaoSim());
+		bonificacaoSim.setHideLabel(true);
+
+		bonificacaoNo = new Radio();
+		bonificacaoNo.setId("id_BonificacaoNo");
+		radiogrouppossuibonificacao.add(bonificacaoNo);
+		bonificacaoNo.setBoxLabel(CadastroGeralI18N.constants.nao());
+		bonificacaoNo.setToolTip(CadastroGeralI18N.tooltip.bonificacaoNo());
+		bonificacaoNo.setHideLabel(true);
+		bonificacaoNo.setValue(true);
+		fieldsetDadosBancarios.add(radiogrouppossuibonificacao,
+				new AbsoluteData(655, 59));
+		radiogrouppossuibonificacao.setSize("98px", "22px");
+		radiogrouppossuibonificacao
+				.setFieldLabel("radioGroupPossuiBonificacao");
+		layoutContainerDadosBancarios.add(fieldsetDadosBancarios);
+		fieldsetDadosBancarios.setSize("864", "115");
+		fieldsetDadosBancarios.setHeading(CadastroGeralI18N.constants
+				.dadosBancarios());
+		contentpanelPrincipal.add(layoutContainerDadosBancarios);
+		layoutContainerDadosBancarios.setSize("864", "125");
+		return layoutContainerDadosBancarios;
+	}
+
+	protected LayoutContainer doGetVinculacao() {
+
+		layoutContainerVinculacao = new LayoutContainer();
+		layoutContainerVinculacao.setId("id_LayoutContainerVinculacao");
+
+		FieldSet fieldsetVinculacao = new FieldSet();
+		fieldsetVinculacao.setId("id_FieldsetVinculacao");
+		fieldsetVinculacao.setAutoWidth(true);
+		fieldsetVinculacao.setLayout(new AbsoluteLayout());
+
+		LabelField labelVinculacao = new LabelField(
+				CadastroGeralI18N.constants.vinculadoA());
+		labelVinculacao.setId("id_LabelVinculacao");
+		fieldsetVinculacao.add(labelVinculacao, new AbsoluteData(0, 0));
+
+		comboVinculacao = new ComboBox();
+		comboVinculacao.setId("id_ComboVinculacao");
+		comboVinculacao.setStore(new ListStore());
+		comboVinculacao.setDisplayField("nome");
+		fieldsetVinculacao.add(comboVinculacao, new AbsoluteData(0, 16));
+		comboVinculacao.setToolTip(CadastroGeralI18N.tooltip.vinculacao());
+		comboVinculacao.setAllowBlank(false);
+		comboVinculacao.setSize("211px", "22px");
+
+		comboVinculacao.addListener(Events.Blur, new Listener<FieldEvent>() {
+			public void handleEvent(FieldEvent e) {
+				Object comboVinculacaoValue = comboVinculacao.getValue();
+				if (comboVinculacaoValue == null) {
+					comboCpfCnpjVinculador.clear();
+					textNomeVinculador.setValue("");
+					comboCpfCnpjVinculador.setEnabled(false);
+				} else {
+					comboCpfCnpjVinculador.setEnabled(true);
+				}
+			}
+		});
+
+		comboVinculacao.addListener(Events.Select, new Listener<FieldEvent>() {
+			public void handleEvent(FieldEvent e) {
+				comboCpfCnpjVinculador.clear();
+				textNomeVinculador.setValue("");
+				comboCpfCnpjVinculador.setEnabled(false);
+			}
+		});
+
+		LabelField labelCpfCnpjDoVinculador = new LabelField(
+				CadastroGeralI18N.constants.cpfCnpjVinculador());
+		labelCpfCnpjDoVinculador.setId("id_LabelCpfCnpjDoVinculador");
+		fieldsetVinculacao.add(labelCpfCnpjDoVinculador, new AbsoluteData(243,
+				0));
+		comboCpfCnpjVinculador = new ComboBox();
+		comboCpfCnpjVinculador.setId("id_ComboCpfCnpjVinculador");
+		comboCpfCnpjVinculador.setToolTip(CadastroGeralI18N.tooltip
+				.cpfCnpjDoVinculador());
+		comboCpfCnpjVinculador.setStore(new ListStore());
+		comboCpfCnpjVinculador.setDisplayField("cpfCnpj");
+		comboCpfCnpjVinculador.setAllowBlank(false);
+		comboCpfCnpjVinculador.setSize("191px", "22px");
+		comboCpfCnpjVinculador.setAllowBlank(false);
+		fieldsetVinculacao.add(comboCpfCnpjVinculador,
+				new AbsoluteData(243, 18));
+
+		LabelField lblfldNomevinculador = new LabelField(
+				CadastroGeralI18N.constants.nomeVinculador());
+		lblfldNomevinculador.setId("id_LblfldNomevinculador");
+		fieldsetVinculacao.add(lblfldNomevinculador, new AbsoluteData(468, 0));
+
+		textNomeVinculador = new TextField();
+		textNomeVinculador.setId("id_TextNomeVinculador");
+		textNomeVinculador.setReadOnly(true);
+		textNomeVinculador.setAllowBlank(false);
+		textNomeVinculador.setSize("356px", "22px");
+
+		fieldsetVinculacao.add(textNomeVinculador, new AbsoluteData(468, 16));
+		comboCpfCnpjVinculador.addListener(Events.Blur,
+				new Listener<FieldEvent>() {
+					public void handleEvent(FieldEvent e) {
+						Object comboCpfCnpjVinculadorValue = comboCpfCnpjVinculador
+								.getValue();
+						if (comboCpfCnpjVinculadorValue == null) {
+							textNomeVinculador.setValue("");
+							comboVinculacao.clear();
+							comboCpfCnpjVinculador.setEnabled(false);
+						}
+					}
+				});
+		comboCpfCnpjVinculador.addListener(Events.Select,
+				new Listener<FieldEvent>() {
+					public void handleEvent(FieldEvent e) {
+						String codigo = new Long((Long) comboCpfCnpjVinculador
+								.getValue().get("id")).toString();
+						String nome = (String) comboCpfCnpjVinculador
+								.getValue().get("nomeRazaoSocial");
+						textNomeVinculador.setValue(codigo + " - " + nome);
+					}
+				});
+
+		layoutContainerVinculacao.add(fieldsetVinculacao);
+		fieldsetVinculacao.setSize("843", "75");
+		fieldsetVinculacao.setHeading(CadastroGeralI18N.constants
+				.vinculacaoDependenciaCaptador());
+		return layoutContainerVinculacao;
+	}
+
+	protected LayoutContainer doGetControleAcesso() {
+
+		layoutContainerControleAcesso = new LayoutContainer();
+		layoutContainerControleAcesso.setId("id_LayoutContainerControleAcesso");
+
+		FieldSet fieldsetControleAcesso = new FieldSet();
+		fieldsetControleAcesso.setId("id_FieldsetControleAcesso");
+		fieldsetControleAcesso.setLayout(new AbsoluteLayout());
+
+		LabelField labelGrupoDeAcesso = new LabelField(
+				CadastroGeralI18N.constants.grupoAcesso());
+		labelGrupoDeAcesso.setId("id_LabelGrupoDeAcesso");
+		fieldsetControleAcesso
+				.add(labelGrupoDeAcesso, new AbsoluteData(0, -10));
+
+		RpcProxy proxyGrupoAcesso = new RpcProxy() {
+
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				service.retornaListaGrupoAcesso(callback);
+			}
+		};
+
+		BeanModelReader readerGrupoAcesso = new BeanModelReader();
+		ListLoader loaderGrupoAcesso = new BaseListLoader(proxyGrupoAcesso,
+				readerGrupoAcesso);
+		ListStore<BeanModel> storeGrupoAcesso = new ListStore<BeanModel>(
+				loaderGrupoAcesso);
+
+		comboGrupoAcesso = new ComboBox();
+		comboGrupoAcesso.setId("id_ComboGrupoAcesso");
+		comboGrupoAcesso.setStore(storeGrupoAcesso);
+		comboGrupoAcesso.setToolTip(CadastroGeralI18N.tooltip.grupoAcesso());
+		comboGrupoAcesso.setSize("221px", "22px");
+		comboGrupoAcesso.setDisplayField("nome");
+		comboGrupoAcesso.setAllowBlank(false);
+		fieldsetControleAcesso.add(comboGrupoAcesso, new AbsoluteData(0, 15));
+
+		LabelField labelLogin = new LabelField(
+				CadastroGeralI18N.constants.login());
+		labelLogin.setId("id_LabelLogin");
+		fieldsetControleAcesso.add(labelLogin, new AbsoluteData(257, -10));
+		textLogin = new TextField();
+		textLogin.setId("id_TextLogin");
+
+		textLogin.addListener(Events.OnBlur, new Listener<FieldEvent>() {
+			public void handleEvent(FieldEvent e) {
+				if (!"".equals(textLogin.getValue())
+						&& textLogin.getValue() != null) {
+					service.recuperarUsuarioPorLogin(textLogin.getValue()
+							.toString(), new AsyncCallback<Usuario>() {
+
+						public void onFailure(Throwable caught) {
+							com.google.gwt.user.client.Window
+									.alert("Ocorreu um erro grave!"
+											+ " \nDetalhes:\n"
+											+ caught.getMessage());
+						}
+
+						public void onSuccess(Usuario usuario) {
+							if (usuario != null
+									&& usuario.getLogin().equals(
+											textLogin.getValue().toString())) {
+								if (loginUpdate != null
+										&& loginUpdate.equals(textLogin
+												.getValue())) {
+									return;
+								}
+								com.google.gwt.user.client.Window
+										.alert(CadastroGeralI18N.messages
+												.loginJaUtilizado());
+								textLogin.focus();
+							}
+						}
+					});
+				}
+			}
+		});
+		textLogin.setToolTip(CadastroGeralI18N.tooltip.login());
+		textLogin.setAllowBlank(false);
+		textLogin.setMaxLength(10);
+		textLogin.setSize("177px", "22px");
+		fieldsetControleAcesso.add(textLogin, new AbsoluteData(256, 15));
+
+		LabelField labelSituaoDoUsuario = new LabelField(
+				CadastroGeralI18N.constants.situacao());
+		labelSituaoDoUsuario.setId("id_LabelSituaoDoUsuario");
+		fieldsetControleAcesso.add(labelSituaoDoUsuario, new AbsoluteData(479,
+				-10));
+
+		radiogroupsituacaousuario = new RadioGroup();
+		radiogroupsituacaousuario.setId("id_Radiogroupsituacaousuario");
+		radiogroupsituacaousuario.setSelectionRequired(true);
+
+		situacaoUsuarioLiberado = new Radio();
+		situacaoUsuarioLiberado.setId("id_SituacaoUsuarioLiberado");
+		radiogroupsituacaousuario.add(situacaoUsuarioLiberado);
+		situacaoUsuarioLiberado.setToolTip(CadastroGeralI18N.tooltip
+				.situacaoUsuarioLiberado());
+		situacaoUsuarioLiberado.setBoxLabel(CadastroGeralI18N.constants
+				.liberado());
+		situacaoUsuarioLiberado.setHideLabel(true);
+		situacaoUsuarioLiberado.setValue(true);
+
+		situacaoUsuarioBloqueado = new Radio();
+		situacaoUsuarioBloqueado.setId("id_SituacaoUsuarioBloqueado");
+		radiogroupsituacaousuario.add(situacaoUsuarioBloqueado);
+		situacaoUsuarioBloqueado.setToolTip(CadastroGeralI18N.tooltip
+				.situacaoUsuarioBloqueado());
+		situacaoUsuarioBloqueado.setBoxLabel(CadastroGeralI18N.constants
+				.bloqueado());
+		situacaoUsuarioBloqueado.setHideLabel(true);
+		situacaoUsuarioBloqueado.setValue(true);
+		fieldsetControleAcesso.add(radiogroupsituacaousuario, new AbsoluteData(
+				479, 15));
+		radiogroupsituacaousuario.setFieldLabel("radioGroupSituacaoUsuario");
+
+		checkGerarCheckarSenha = new CheckBoxGroup();
+		checkGerarCheckarSenha.setId("id_CheckGerarCheckarSenha");
+
+		checkGerarCheckarSenha.add(checkgerarsenha);
+		checkGerarCheckarSenha.add(chckbxChecksuperusuario);
+
+		checkgerarsenha = new CheckBox();
+		checkgerarsenha.setId("id_Checkgerarsenha");
+		checkgerarsenha.addListener(Events.OnClick, new Listener<FieldEvent>() {
+			public void handleEvent(FieldEvent e) {
+				Boolean value = checkgerarsenha.getValue();
+				if (value) {
+					if (textEmail.getValue() == null
+							|| "".equals(textEmail.getValue())) {
+						MessageBox.alert(CadastroGeralI18N.messages
+								.headingInformacao(),
+								CadastroGeralI18N.messages
+										.informeEmailEnviarSenha(), null);
+						checkgerarsenha.setValue(false);
+						textEmail.focus();
+					}
+				}
+			}
+		});
+		fieldsetControleAcesso.add(checkgerarsenha, new AbsoluteData(669, 15));
+		checkgerarsenha.setBoxLabel(CadastroGeralI18N.constants
+				.checkGerarSenha());
+		checkgerarsenha.setHideLabel(true);
+		checkgerarsenha.setToolTip(CadastroGeralI18N.tooltip.checkGerarSenha());
+
+		chckbxChecksuperusuario = new CheckBox();
+		chckbxChecksuperusuario.setId("id_ChckbxChecksuperusuario");
+		chckbxChecksuperusuario.addListener(Events.OnClick,
+				new Listener<FieldEvent>() {
+					public void handleEvent(FieldEvent e) {
+						Boolean value = chckbxChecksuperusuario.getValue();
+						if (value) {
+							MessageBox
+									.confirm(
+											"Confirme",
+											"Caso voce torne essa pessoa sua administradora,"
+													+ "\n ela podera representar voce em acoes criticas do sistema, "
+													+ "\n e tera acesso a dados sigilosos de sua exclusiva responsabilidade!"
+													+ "Voce tem certeza que deseja tornar essa pessoa sua administradora?",
+											new Listener<MessageBoxEvent>() {
+
+												public void handleEvent(
+														MessageBoxEvent be) {
+													if (be.getButtonClicked()
+															.getText()
+															.equals("Sim")) {
+														chckbxChecksuperusuario
+																.setValue(true);
+													} else {
+														chckbxChecksuperusuario
+																.setValue(false);
+													}
+
+												}
+											});
+
+						}
+					}
+				});
+		fieldsetControleAcesso.add(chckbxChecksuperusuario, new AbsoluteData(
+				669, 0));
+		chckbxChecksuperusuario.setBoxLabel("Conceder Super Acesso");
+		chckbxChecksuperusuario.setHideLabel(true);
+		chckbxChecksuperusuario
+				.setToolTip("Permite que o usuario cadastrado seja seu administrador");
+
+		layoutContainerControleAcesso.add(fieldsetControleAcesso);
+		fieldsetControleAcesso.setSize("866", "75");
+		fieldsetControleAcesso.setAutoWidth(true);
+		fieldsetControleAcesso.setHeading(CadastroGeralI18N.constants
+				.controleAcessoUsuario());
+		layoutContainerPrincipal.add(contentpanelPrincipal);
+		contentpanelPrincipal.setSize("800", "300");
+		add(layoutContainerPrincipal);
+		layoutContainerPrincipal.setBorders(true);
+		layoutContainerPrincipal.add(contentpanelPrincipal);
+		contentpanelPrincipal.setSize("800", "300");
+		add(layoutContainerPrincipal);
+		layoutContainerPrincipal.setBorders(true);
+		layoutContainerPrincipal.add(contentpanelPrincipal);
+		contentpanelPrincipal.setSize("800", "300");
+		add(layoutContainerPrincipal);
+		layoutContainerPrincipal.setBorders(true);
+		return layoutContainerControleAcesso;
+	}
+
+	protected LayoutContainer doGetPesquisa() {
+
+		LayoutContainer layoutContainerBotoespesquisa = new LayoutContainer();
+		layoutContainerBotoespesquisa.setId("id_LayoutContainerBotoespesquisa");
+		layoutContainerBotoespesquisa.setLayout(new AbsoluteLayout());
+
+		Button btnLimpar = new Button(CadastroGeralI18N.constants.limpar());
+		btnLimpar.setId("id_BtnLimpar");
+		layoutContainerBotoespesquisa.add(btnLimpar, new AbsoluteData(769, 6));
+
+		Button btnSalvar = new Button(CadastroGeralI18N.constants.salvar());
+		btnSalvar.setId("id_BtnSalvar");
+		layoutContainerBotoespesquisa.add(btnSalvar, new AbsoluteData(819, 6));
+		layoutContainerBotoespesquisa.setSize("868", "40");
+
+		/* tooltips para os botoes */
+		btnLimpar.setToolTip(CadastroGeralI18N.tooltip.botaoLimpar());
+		btnSalvar.setToolTip(CadastroGeralI18N.tooltip.botaoIncluir());
+
+		btnLimpar.addSelectionListener(new SelectionListener<ButtonEvent>() {
+
+			@Override
+			public void componentSelected(ButtonEvent ce) {
+				onClearForm();
+			}
+		});
+
+		btnSalvar.addSelectionListener(new SelectionListener<ButtonEvent>() {
+
+			@Override
+			public void componentSelected(ButtonEvent ce) {
+				salvar();
+			}
+		});
+
+		return layoutContainerBotoespesquisa;
+	}
+
+	private PessoaJuridica getPessoaJuridicaPopulado() {
+		Atribuicao atribuicao = new Atribuicao();
+		Endereco endereco = new Endereco();
+		Cidade cidade = new Cidade();
+		Estado estado = new Estado();
+		ContaBancaria dadosBancarios = new ContaBancaria();
+		InstituicaoFinanceira banco = new InstituicaoFinanceira();
+		PerfilComissao perfilComissao = new PerfilComissao();
+		GrupoAcesso grupoAcesso = new GrupoAcesso();
+		Usuario usuario = new Usuario();
+		pessoaJuridica = new PessoaJuridica();
+
+		/** identificacao **/
+		atribuicao = comboAtribuicao.getValue().getBean();
+		pessoaJuridica.setAtribuicao(atribuicao);
+		pessoaJuridica.setNomeFantasia(textApelidoNomeFantasia.getValue()
+				.toString());
+		pessoaJuridica
+				.setRazaoSocial(textNomeRazaoSocial.getValue().toString());
+		pessoaJuridica.setSigla(textSigla.getValue().toString());
+		pessoaJuridica.setNomeFantasia(textApelidoNomeFantasia.getValue()
+				.toString());
+		pessoaJuridica.setCnpj(textCpfCnpj.getValue().longValue());
+		pessoaJuridica.setTipoPessoa(TipoPessoa.JURIDICA);
+		pessoaJuridica.setPossuiCadastroAtivo(situacaoPessoaAtiva.getValue());
+
+		/* caso seja incluir, ira ser gerada no banco */
+		if (getOperacao() == Function.EDITAR) {
+			pessoaJuridica.setId(new Long(textCodigo.getValue().toString()));
+		}
+
+		/** contato **/
+		endereco.setEndereco(textEndereco.getValue().toString());
+		endereco.setNumero(textNumero.getValue().toString());
+		endereco.setCep(new Long(textCep.getValue().toString()));
+		endereco.setBairro(textBairro.getValue().toString());
+
+		estado = comboEstados.getValue().getBean();
+		cidade = comboCidades.getValue().getBean();
+		cidade.setEstado(estado);
+
+		endereco.setCidade(cidade);
+		endereco.setEmail(textEmail.getValue().toString());
+
+		endereco.setFax(textDddFax.getValue().toString());
+		endereco.setTelefoneFixo(textDddFoneFixo.getValue().toString());
+		endereco.setCelular(textDddCelular.getValue().toString());
+		endereco.setNomeResponsavel(textNomeRazaoSocial.getValue().toString());
+		endereco.setTelefoneResponsavel(textDddTelefoneResponsvel.getValue()
+				.toString());
+		endereco.setPossuiCadastroAtivo(situacaoPessoaAtiva.getValue());
+
+		endereco.setId(cadContaBancaria != null ? cadContaBancaria.getId()
+				: null);/* usado no update */
+
+		List<Endereco> listaEndereco = new ArrayList<Endereco>();
+		listaEndereco.add(endereco);
+		pessoaJuridica.setEnderecos(listaEndereco);
+
+		/** dados bancarios **/
+		banco = comboBancos.getValue().getBean();
+
+		dadosBancarios.setBanco(banco);
+		dadosBancarios.setAgencia(textAgencia.getValue().toString());
+		dadosBancarios.setConta(textNumeroConta.getValue().toString());
+		dadosBancarios.setNomeFavorecido(textFavorecido.getValue().toString());
+		dadosBancarios.setCpfCnpjFavorecido(new Long(textCpfCnpj.getValue()
+				.toString()));
+		dadosBancarios.setPossuiCadastroAtivo(situacaoPessoaAtiva.getValue());
+		dadosBancarios.setId(cadContaBancaria != null ? cadContaBancaria
+				.getId() : null); /* usado no update */
+
+		perfilComissao = comboPerfilComissao.getValue().getBean();
+
+		pessoaJuridica.setPerfilComissao(perfilComissao);
+
+		dadosBancarios.setPessoa(pessoaFisica);
+
+		pessoaJuridica
+				.setPossuiBonificacaoContratual(bonificacaoSim.getValue() == true ? true
+						: false);
+
+		dadosBancarios.setTipoConta(comboTipoConta.getSimpleValue());
+
+		List<ContaBancaria> listaDadosBancarios = new ArrayList<ContaBancaria>();
+		listaDadosBancarios.add(dadosBancarios);
+		pessoaJuridica.setDadosBancarios(listaDadosBancarios);
+
+		/** Vinculacao/Dependencia/Captador **/
+		// pessoaJuridica.setPessoaVinculadora(new Pessoa((Long)
+		// comboCpfCnpjVinculador.getValue().get("id")));
+
+		ArvoreFamiliar arvoreFamiliar = new ArvoreFamiliar();
+		arvoreFamiliar.setArvore(comboCpfCnpjVinculador.getValue()
+				.get("arvore").toString());
+		arvoreFamiliar.setNivel(new Integer(comboCpfCnpjVinculador.getValue()
+				.get("nivel").toString()));
+		arvoreFamiliar.setId((Long) comboCpfCnpjVinculador.getValue().get(
+				"idAravore"));
+
+		Pessoa pessoaVinculadora = new Pessoa();
+		pessoaVinculadora.setId((Long) comboCpfCnpjVinculador.getValue().get(
+				"id"));
+		Atribuicao atribuicaoVinc = comboVinculacao.getValue().getBean();
+		pessoaVinculadora.setAtribuicao(atribuicaoVinc);
+		pessoaVinculadora.setArvoreFamiliar(arvoreFamiliar);
+
+		pessoaJuridica.setPessoaVinculadora(pessoaVinculadora);
+
+		/** Controle de Acesso do Usuario **/
+		grupoAcesso = comboGrupoAcesso.getValue().getBean();
+		usuario.setLogin(textLogin.getValue().toString());
+		usuario.setPossuiCadastroAtivo(situacaoUsuarioLiberado.getValue());
+		usuario.setGupoAcesso(grupoAcesso);
+		usuario.setId(cadUsuario != null ? cadUsuario.getId() : null);/*
+																	 * usado no
+																	 * update
+																	 */
+		usuario.setSenha(cadUsuario != null ? cadUsuario.getSenha() : null); /*
+																			 * usado
+																			 * no
+																			 * update
+																			 */
+
+		if (chckbxChecksuperusuario.getValue()) {
+			usuario.setIdSuperUsuario(new Long("999999999"));
+		}
+		if (checkgerarsenha.getValue()) {
+			usuario.setSenha("999999999");
+		}
+		pessoaJuridica.setUsuario(usuario);
+
+		return pessoaJuridica;
+	}
+
+	private PessoaFisica getPessoaFisicaPopulado() {
+
+		Atribuicao atribuicao = new Atribuicao();
+		Endereco endereco = new Endereco();
+		Cidade cidade = new Cidade();
+		Estado estado = new Estado();
+		ContaBancaria dadosBancarios = new ContaBancaria();
+		InstituicaoFinanceira banco = new InstituicaoFinanceira();
+		PerfilComissao perfilComissao = new PerfilComissao();
+		GrupoAcesso grupoAcesso = new GrupoAcesso();
+		Usuario usuario = new Usuario();
+
+		pessoaFisica = new PessoaFisica();
+
+		/** identificacao **/
+		atribuicao = comboAtribuicao.getValue().getBean();
+		pessoaFisica.setAtribuicao(atribuicao);
+		pessoaFisica.setNome(textNomeRazaoSocial.getValue().toString());
+		pessoaFisica.setApelido(textApelidoNomeFantasia.getValue().toString());
+		pessoaFisica.setCpf(textCpfCnpj.getValue().longValue());
+		pessoaFisica.setTipoPessoa(TipoPessoa.FISICA);
+		pessoaFisica.setPossuiCadastroAtivo(situacaoPessoaAtiva.getValue());
+
+		/* caso seja incluir, ira ser gerada no banco */
+		if (getOperacao() == Function.EDITAR) {
+			pessoaJuridica.setId(new Long(textCodigo.getValue().toString()));
+		}
+
+		/** contato **/
+		endereco.setEndereco(textEndereco.getValue().toString());
+		endereco.setNumero(textNumero.getValue().toString());
+		endereco.setCep(new Long(textCep.getValue().toString()));
+		endereco.setBairro(textBairro.getValue().toString());
+		endereco.setPossuiCadastroAtivo(situacaoPessoaAtiva.getValue());
+
+		estado = comboEstados.getValue().getBean();
+		cidade = comboCidades.getValue().getBean();
+		cidade.setEstado(estado);
+
+		endereco.setCidade(cidade);
+		endereco.setEmail(textEmail.getValue().toString());
+
+		endereco.setFax(textDddFax.getValue().toString());
+		endereco.setTelefoneFixo(textDddFoneFixo.getValue().toString());
+		endereco.setCelular(textDddCelular.getValue().toString());
+		endereco.setNomeResponsavel(textNomeRazaoSocial.getValue().toString());
+		endereco.setTelefoneResponsavel(textDddTelefoneResponsvel.getValue()
+				.toString());
+
+		endereco.setId(cadEndereco != null ? cadEndereco.getId() : null);/*
+																		 * usado
+																		 * no
+																		 * update
+																		 */
+
+		List<Endereco> listaEndereco = new ArrayList<Endereco>();
+		listaEndereco.add(endereco);
+		pessoaFisica.setEnderecos(listaEndereco);
+
+		/** dados bancarios **/
+		banco = comboBancos.getValue().getBean();
+
+		dadosBancarios.setBanco(banco);
+		dadosBancarios.setAgencia(textAgencia.getValue().toString());
+		dadosBancarios.setConta(textNumeroConta.getValue().toString());
+		dadosBancarios.setNomeFavorecido(textFavorecido.getValue().toString());
+		dadosBancarios.setCpfCnpjFavorecido(new Long(textCpfCnpj.getValue()
+				.toString()));
+		dadosBancarios.setPossuiCadastroAtivo(situacaoPessoaAtiva.getValue());
+		dadosBancarios.setId(cadContaBancaria != null ? cadContaBancaria
+				.getId() : null); /* usado no update */
+
+		perfilComissao = comboPerfilComissao.getValue().getBean();
+
+		pessoaFisica.setPerfilComissao(perfilComissao);
+
+		dadosBancarios.setPessoa(pessoaFisica);
+
+		pessoaFisica
+				.setPossuiBonificacaoContratual(bonificacaoSim.getValue() == true ? true
+						: false);
+
+		dadosBancarios.setTipoConta(comboTipoConta.getSimpleValue());
+
+		List<ContaBancaria> listaDadosBancarios = new ArrayList<ContaBancaria>();
+		listaDadosBancarios.add(dadosBancarios);
+		pessoaFisica.setDadosBancarios(listaDadosBancarios);
+
+		/** Vinculacao/Dependencia/Captador **/
+		// pessoaFisica.setPessoaVinculadora(new Pessoa((Long)
+		// comboCpfCnpjVinculador.getValue().get("id")));
+
+		ArvoreFamiliar arvoreFamiliar = new ArvoreFamiliar();
+		arvoreFamiliar.setArvore(comboCpfCnpjVinculador.getValue()
+				.get("arvore").toString());
+		arvoreFamiliar.setNivel(new Integer(comboCpfCnpjVinculador.getValue()
+				.get("nivel").toString()));
+		arvoreFamiliar.setId((Long) comboCpfCnpjVinculador.getValue().get(
+				"idAravore"));
+
+		Pessoa pessoaVinculadora = new Pessoa();
+		Atribuicao atribuicaoVinc = comboVinculacao.getValue().getBean();
+		pessoaVinculadora.setAtribuicao(atribuicaoVinc);
+		pessoaVinculadora.setId((Long) comboCpfCnpjVinculador.getValue().get(
+				"id"));
+
+		pessoaVinculadora.setArvoreFamiliar(arvoreFamiliar);
+		pessoaFisica.setPessoaVinculadora(pessoaVinculadora);
+
+		/** Controle de Acesso do Usuario **/
+		grupoAcesso = comboGrupoAcesso.getValue().getBean();
+		usuario.setLogin(textLogin.getValue().toString());
+		usuario.setPossuiCadastroAtivo(situacaoUsuarioLiberado.getValue());
+		usuario.setGupoAcesso(grupoAcesso);
+		usuario.setId(cadUsuario != null ? cadUsuario.getId() : null); /*
+																		 * usado
+																		 * no
+																		 * update
+																		 */
+		usuario.setSenha(cadUsuario != null ? cadUsuario.getSenha() : null); /*
+																			 * usado
+																			 * no
+																			 * update
+																			 */
+
+		if (chckbxChecksuperusuario.getValue()) {
+			usuario.setIdSuperUsuario(new Long("999999999"));
+		}
+		if (checkgerarsenha.getValue()) {
+			usuario.setSenha("999999999");
+		}
+		pessoaFisica.setUsuario(usuario);
+
+		return pessoaFisica;
+
+	}
+
+	protected void salvar() {
+
+		Pessoa pessoa = null;
+
+		if (!isDadosValidos()) {
+			return;
+		}
+
+		if (radioTipoPessoaFisica.getValue()) {
+			pessoa = getPessoaFisicaPopulado();
+		} else {
+			pessoa = getPessoaJuridicaPopulado();
+		}
+
+		if (getOperacao() == Function.EDITAR) {
+			service.atualizarPessoa(pessoa, new AsyncCallback<Boolean>() {
+
+				public void onFailure(Throwable caught) {
+					com.google.gwt.user.client.Window
+							.alert("Ocorreu uma falha na gravacao, tente novamente!");
+				}
+
+				public void onSuccess(Boolean result) {
+					if (result) {
+						com.google.gwt.user.client.Window
+								.alert("Pessoa atualizada com sucesso!");
+					}
+				}
+			});
+		} else {
+
+			service.incluirPessoa(pessoa, new AsyncCallback<Long>() {
+
+				public void onFailure(Throwable caught) {
+					com.google.gwt.user.client.Window
+							.alert("Ocorreu uma falha na gravacao, tente novamente!");
+				}
+
+				public void onSuccess(Long result) {
+					com.google.gwt.user.client.Window
+							.alert("Pessoa cadastrada com sucesso!");
+					textCodigo.setValue(result);
+				}
+			});
+		}
+	}
+
+	@Override
+	protected void onAjuda() {
+		AjudaCadastroGeralWindow ajudaCadastroGeralWindow = new AjudaCadastroGeralWindow();
+		ajudaCadastroGeralWindow.show();
+	}
+
+	@Override
+	protected void onClearForm() {
+
+		/* identificacao */
+		textCodigo.reset();
+		textSigla.reset();
+		comboAtribuicao.reset();
+		textCpfCnpj.reset();
+		textNomeRazaoSocial.reset();
+		textApelidoNomeFantasia.reset();
+		situacaoPessoaAtiva.reset();
+		situacaoPessoaInativa.reset();
+		radioTipoPessoaFisica.reset();
+		radioTipoPessoaJuridica.reset();
+
+		/* dados contatos */
+		textEndereco.reset();
+		textNumero.reset();
+		textCep.reset();
+		textBairro.reset();
+		comboEstados.reset();
+		comboCidades.reset();
+		textEmail.reset();
+		textDddFax.reset();
+		textDddFoneFixo.reset();
+		textDddCelular.reset();
+		textResponsavel.reset();
+		textDddTelefoneResponsvel.reset();
+
+		/* dados bancarios */
+		comboBancos.reset();
+		comboTipoConta.reset();
+		textAgencia.reset();
+		textNumeroConta.reset();
+		textFavorecido.reset();
+		textCpfCnpjFavorecido.reset();
+		comboPerfilComissao.reset();
+		bonificacaoSim.reset();
+		bonificacaoNo.reset();
+
+		/* vinculacao dependencia capacitador */
+		comboVinculacao.reset();
+		comboCpfCnpjVinculador.reset();
+		textNomeVinculador.reset();
+
+		/* controle grupo acesso */
+		comboGrupoAcesso.reset();
+		textLogin.reset();
+		situacaoUsuarioLiberado.reset();
+		situacaoUsuarioBloqueado.reset();
+		checkgerarsenha.reset();
+		chckbxChecksuperusuario.reset();
+	}
+
+	protected boolean isDadosValidos() {
+
+		if (!comboAtribuicao.isValid()) {
+			return false;
+		} else if (!textNomeRazaoSocial.isValid()) {
+			return false;
+		} else if (!textSigla.isValid()) {
+			return false;
+		} else if (!textCpfCnpj.isValid()) {
+			return false;
+		} else if (!textApelidoNomeFantasia.isValid()) {
+			return false;
+		} else if (!radiogroupsituacaopessoa.isValid()) {
+			return false;
+		} else if (!radiogrouptipopessoa.isValid()) {
+			return false;
+		} else if (!textEndereco.isValid()) {
+			return false;
+		} else if (!textNumero.isValid()) {
+			return false;
+		} else if (!textCep.isValid()) {
+			return false;
+		} else if (!textBairro.isValid()) {
+			return false;
+		} else if (!comboEstados.isValid()) {
+			return false;
+		} else if (!comboCidades.isValid()) {
+			return false;
+		} else if (!textEmail.isValid()) {
+			return false;
+		} else if (!textDddFax.isValid()) {
+			return false;
+		} else if (!textDddFoneFixo.isValid()) {
+			return false;
+		} else if (!textDddCelular.isValid()) {
+			return false;
+		} else if (!textResponsavel.isValid()) {
+			return false;
+		} else if (!textDddTelefoneResponsvel.isValid()) {
+			return false;
+		} else if (!comboBancos.isValid()) {
+			return false;
+		} else if (!comboTipoConta.isValid()) {
+			return false;
+		} else if (!textAgencia.isValid()) {
+			return false;
+		} else if (!textNumeroConta.isValid()) {
+			return false;
+		} else if (!textFavorecido.isValid()) {
+			return false;
+		} else if (!textCpfCnpjFavorecido.isValid()) {
+			return false;
+		} else if (!comboPerfilComissao.isValid()) {
+			return false;
+		} else if (!radiogrouppossuibonificacao.isValid()) {
+			return false;
+		} else if (!comboVinculacao.isValid()) {
+			return false;
+		} else if (!comboCpfCnpjVinculador.isValid()) {
+			return false;
+		} else if (!textNomeVinculador.isValid()) {
+			return false;
+		} else if (!comboGrupoAcesso.isValid()) {
+			return false;
+		} else if (!textLogin.isValid()) {
+			return false;
+		} else if (!radiogroupsituacaousuario.isValid()) {
+			return false;
+		}
+		// else if(checkGerarCheckarSenha.getValues() == null){
+		// checkGerarCheckarSenha.getMessages().setInvalidText("Selecione pelo menos uma opcao");
+		// return false;
+		// }
+		else {
+			return true;
+		}
+	}
+}

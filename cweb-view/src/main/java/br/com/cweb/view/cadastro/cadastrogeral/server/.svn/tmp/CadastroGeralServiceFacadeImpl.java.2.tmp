@@ -1,0 +1,111 @@
+package br.com.cweb.view.cadastro.cadastrogeral.server;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.extjs.gxt.ui.client.data.BasePagingLoadResult;
+import com.extjs.gxt.ui.client.data.PagingLoadConfig;
+import com.extjs.gxt.ui.client.data.PagingLoadResult;
+import br.com.cweb.cadastro.persistence.entity.Atribuicao;
+import br.com.cweb.cadastro.persistence.entity.Cidade;
+import br.com.cweb.cadastro.persistence.entity.Estado;
+import br.com.cweb.cadastro.persistence.entity.InstituicaoFinanceira;
+import br.com.cweb.cadastro.persistence.entity.PerfilComissao;
+import br.com.cweb.cadastro.persistence.entity.Pessoa;
+import br.com.cweb.cadastro.persistence.entity.TipoConta;
+import br.com.cweb.cadastro.service.AcessoService;
+import br.com.cweb.cadastro.service.ComissaoService;
+import br.com.cweb.cadastro.service.InstituicaoFinanceiraService;
+import br.com.cweb.cadastro.service.LocalizacaoService;
+import br.com.cweb.cadastro.service.OrganogramaService;
+import br.com.cweb.seguranca.persistence.entity.GrupoAcesso;
+import br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacade;
+
+@Service("CadastroGeralServiceFacade")
+public class CadastroGeralServiceFacadeImpl implements CadastroGeralServiceFacade{
+
+	@Autowired
+	private LocalizacaoService localizacaoService;
+	
+	@Autowired
+	private InstituicaoFinanceiraService instituicaoFinanceiraService;
+	
+	@Autowired
+	private ComissaoService comissaoService;
+	
+	@Autowired
+	private OrganogramaService organogramaService;
+	
+	@Autowired
+	private AcessoService acessoService;
+	
+	public List<Estado> retornaListaEstados() {
+		List<Estado> result = localizacaoService.recuperarEstados();
+		return result;
+	}
+
+	public List<Cidade> retornaListaCidades(){
+		List<Cidade> result = localizacaoService.recuperarCidades();
+		return result;
+	}
+	
+	public List<InstituicaoFinanceira> retornaListaBancos(){
+		List<InstituicaoFinanceira> result = instituicaoFinanceiraService.recuperarBancos();
+		return result;
+	}
+	
+	public List<TipoConta> retornaListaTipoConta(){
+		List<TipoConta> result = instituicaoFinanceiraService.recuperarTiposConta();
+		return result;
+	}
+	
+	public List<PerfilComissao> retornaListaPerfilComissao(){
+		List<PerfilComissao> result = comissaoService.recuperarPerfisComissao();
+		return result;
+	}
+	
+	public List<GrupoAcesso> retornaListaGrupoAcesso(){
+		List<GrupoAcesso> result = acessoService.recuperarGruposAcesso();
+		return result;
+	}
+	
+	public List<Atribuicao> retornaListaAtribuicao(){
+		List<Atribuicao> result = organogramaService.recuperarAtribuicoes();
+		return result;
+	} 
+	
+	public List<Pessoa> retornaListaPessoa(){
+		List<Pessoa> result = organogramaService.recuperarPessoasOrganograma();
+		return result;
+	}
+	
+	public PagingLoadResult<Pessoa> loadPessoa(PagingLoadConfig config){
+		
+		List<Pessoa> listaPessoas = retornaListaPessoa();
+		
+		return getPagingLoadResult(listaPessoas, config);
+	}
+	
+	private PagingLoadResult<Pessoa> getPagingLoadResult(List<Pessoa> listaPessoas, PagingLoadConfig config) {
+		
+		List<Pessoa> pagePessoas = new ArrayList<Pessoa>();
+		int offset = config.getOffset();
+		int limit = listaPessoas.size();
+		
+		/**verifica se o proximo deslocamento e maior 
+		 * que o total de paginas, se for ele retorna 
+		 * o ultimo registro como limit da pagina.**/
+		if (config.getLimit() > 0) {
+			limit = Math.min(offset + config.getLimit(), limit);
+		}
+		
+		for (int i = config.getOffset(); i < limit; i++) {
+			pagePessoas.add(listaPessoas.get(i));
+		}
+		
+		System.out.println("Quantidade de Registros: " + pagePessoas.size());
+		return new BasePagingLoadResult<Pessoa>(pagePessoas, offset,listaPessoas.size());
+	}
+	
+}

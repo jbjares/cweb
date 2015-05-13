@@ -1,0 +1,134 @@
+package br.com.cweb.view.cadastro.cadastrogeral.server;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletContext;
+
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.cweb.cadastro.persistence.entity.Atribuicao;
+import br.com.cweb.cadastro.persistence.entity.Cidade;
+import br.com.cweb.cadastro.persistence.entity.Estado;
+import br.com.cweb.cadastro.persistence.entity.InstituicaoFinanceira;
+import br.com.cweb.cadastro.persistence.entity.PerfilComissao;
+import br.com.cweb.cadastro.persistence.entity.Pessoa;
+import br.com.cweb.cadastro.persistence.entity.PessoaFisicaJuridica;
+import br.com.cweb.cadastro.persistence.entity.TipoConta;
+import br.com.cweb.cadastro.service.AcessoService;
+import br.com.cweb.cadastro.service.ComissaoService;
+import br.com.cweb.cadastro.service.InstituicaoFinanceiraService;
+import br.com.cweb.cadastro.service.LocalizacaoService;
+import br.com.cweb.cadastro.service.OrganogramaService;
+import br.com.cweb.core.persistence.entity.EntityModel;
+import br.com.cweb.seguranca.persistence.entity.GrupoAcesso;
+import br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacade;
+
+import com.extjs.gxt.ui.client.data.BasePagingLoadResult;
+import com.extjs.gxt.ui.client.data.PagingLoadConfig;
+import com.extjs.gxt.ui.client.data.PagingLoadResult;
+
+@Service("CadastroGeralServiceFacade")
+public class CadastroGeralServiceFacadeImpl implements CadastroGeralServiceFacade{
+
+	@Autowired
+	private LocalizacaoService localizacaoService;
+	
+	@Autowired
+	private InstituicaoFinanceiraService instituicaoFinanceiraService;
+	
+	@Autowired
+	private ComissaoService comissaoService;
+	
+	@Autowired
+	private OrganogramaService organogramaService;
+	
+	@Autowired
+	private AcessoService acessoService;
+	
+	public List<Estado> retornaListaEstados() {
+		List<Estado> result = localizacaoService.recuperarEstados();
+		return result;
+	}
+
+	public List<Cidade> retornaListaCidades(){
+		List<Cidade> result = localizacaoService.recuperarCidades();
+		return result;
+	}
+	
+	public List<InstituicaoFinanceira> retornaListaBancos(){
+		List<InstituicaoFinanceira> result = instituicaoFinanceiraService.recuperarBancos();
+		return result;
+	}
+	
+	public List<TipoConta> retornaListaTipoConta(){
+		List<TipoConta> result = instituicaoFinanceiraService.recuperarTiposConta();
+		return result;
+	}
+	
+	public List<PerfilComissao> retornaListaPerfilComissao(){
+		List<PerfilComissao> result = comissaoService.recuperarPerfisComissao();
+		return result;
+	}
+	
+	public List<GrupoAcesso> retornaListaGrupoAcesso(){
+		List<GrupoAcesso> retorno = acessoService.recuperarGruposAcesso();
+		List<GrupoAcesso> result = new ArrayList<GrupoAcesso>(); 
+		for(GrupoAcesso grupoAcessoRetorno:retorno){
+			GrupoAcesso grupoAcessoResult = DozerBeanMapperSingletonWrapper.getInstance().map(grupoAcessoRetorno,GrupoAcesso.class);
+			result.add(grupoAcessoResult);
+		}
+		return result;
+	}
+	
+	public List<Atribuicao> retornaListaAtribuicao(){
+		List<Atribuicao> result = organogramaService.recuperarAtribuicoes();
+		return result;
+	} 
+	
+	public List<Pessoa> retornaListaPessoa(){
+		List<Pessoa> retorno = organogramaService.recuperarPessoasOrganograma();
+		List<Pessoa> result = new ArrayList<Pessoa>(); 
+		for(Pessoa pessoaRetorno:retorno){
+			Pessoa pessoaResult = DozerBeanMapperSingletonWrapper.getInstance().map(pessoaRetorno,Pessoa.class); 
+			result.add(pessoaResult);
+		}
+		return result;
+	}
+	
+	public PagingLoadResult<PessoaFisicaJuridica> retornaListaPaginadaPessoaFisicaJuridica(PagingLoadConfig config){
+		List<PessoaFisicaJuridica> result = organogramaService.recuperarPessoasFisicasJuridicasOrganograma();
+		return getPagingLoadResult(result, config);
+	}
+	
+	public PagingLoadResult<Pessoa> retornaListaPagianadaPessoa(PagingLoadConfig config){
+		List<Pessoa> listaPessoas = retornaListaPessoa();
+		return getPagingLoadResult(listaPessoas, config);
+	}
+	
+	private PagingLoadResult getPagingLoadResult(List lista, PagingLoadConfig config) {
+		
+		List pagePessoas = new ArrayList();
+		int offset = config.getOffset();
+		int limit = lista.size();
+		
+		/**verifica se o proximo deslocamento e maior 
+		 * que o total de paginas, se for ele retorna 
+		 * o ultimo registro como limit da pagina.**/
+		if (config.getLimit() > 0) {
+			limit = Math.min(offset + config.getLimit(), limit);
+		}
+		
+		for (int i = config.getOffset(); i < limit; i++) {
+			pagePessoas.add(lista.get(i));
+		}
+		return new BasePagingLoadResult<Pessoa>(pagePessoas, offset,lista.size());
+	}
+
+	public List<PessoaFisicaJuridica> retornaListarCpfCnpjPessoaPorTipoVinculacao(Long codigoTipoVinculacao) {
+		return organogramaService.recuperarPessoasFisicasJuridicasOrganogramaPorCodigoAtribuicao(codigoTipoVinculacao);
+	}
+
+}

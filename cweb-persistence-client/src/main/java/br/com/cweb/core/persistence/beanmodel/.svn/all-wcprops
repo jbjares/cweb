@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/cweb-repo-fnt/!svn/ver/445/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/beanmodel
+END
+Paginador.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/445/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/beanmodel/Paginador.java
+END
+SimpleModelData.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/beanmodel/SimpleModelData.java
+END
+ResultadoPaginado.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/cweb-repo-fnt/!svn/ver/445/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/beanmodel/ResultadoPaginado.java
+END
+Ordenacao.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/beanmodel/Ordenacao.java
+END

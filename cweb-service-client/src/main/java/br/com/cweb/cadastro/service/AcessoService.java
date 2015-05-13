@@ -1,0 +1,48 @@
+package br.com.cweb.cadastro.service;
+
+import java.util.List;
+import java.util.Set;
+
+import br.com.cweb.cadastro.persistence.entity.Pessoa;
+import br.com.cweb.cadastro.service.to.RespostaEnumTO;
+import br.com.cweb.core.persistence.exception.DaoException;
+import br.com.cweb.core.persistence.exception.NenhumRegistroEncontradoException;
+import br.com.cweb.core.persistence.exception.ValidationException;
+import br.com.cweb.seguranca.persistence.entity.AcessoGrupoDTO;
+import br.com.cweb.seguranca.persistence.entity.AcessoMenu;
+import br.com.cweb.seguranca.persistence.entity.Funcionalidade;
+import br.com.cweb.seguranca.persistence.entity.GrupoAcesso;
+import br.com.cweb.seguranca.persistence.entity.TipoPermissao;
+import br.com.cweb.seguranca.persistence.entity.Usuario;
+
+public interface AcessoService {
+	public RespostaEnumTO logar(Usuario usuario,boolean anularSessao);
+	public RespostaEnumTO logar(Usuario usuario);
+	public Usuario obterUsuarioNoBanco(String login,String senha);
+	public Usuario obterUsuarioNoBanco(Usuario usuario);
+	public Usuario obterUsuarioLogado();
+	public void logoff();
+	List<GrupoAcesso> recuperarGruposAcesso();
+	public Usuario obterUsuarioNoBanco(String login);
+	public String obterNomePessoa(Usuario usuario);
+	public GrupoAcesso recuperarGrupoAcesso(Long idGrupoAcesso);
+	public void incluirGrupoAcesso(GrupoAcesso grupoAcesso);
+	public void atualizarGrupoAcesso(GrupoAcesso grupoAcesso);
+	public void excluirGrupoAcesso(GrupoAcesso grupoAcesso);
+	public void alterarSenha(Usuario usuario);
+	public Pessoa obterPessoa(Usuario usuario);
+	public List<AcessoMenu> obterAcessosMenu(Long idGrupoAcesso);
+	public List<Funcionalidade> obterFuncionalidades();
+	public List<Funcionalidade> obterFuncionalidadesPorGrupoAcesso(Long idGrupoAcesso)throws NenhumRegistroEncontradoException,DaoException;
+	public List<TipoPermissao> obterPermissoes(String codigoFunc)throws NumberFormatException, NenhumRegistroEncontradoException;
+	public List<TipoPermissao> obterPermissoes()throws NenhumRegistroEncontradoException,DaoException;
+	public List<TipoPermissao> obterPermissoesPertencemFuncionalidade(Funcionalidade funcionalidade,GrupoAcesso grupoAcesso) throws DaoException,NenhumRegistroEncontradoException;
+	public List<TipoPermissao> obterPermissoesNaoPertencemFuncionalidade(Funcionalidade funcionalidade,GrupoAcesso grupoAcesso) throws DaoException, NenhumRegistroEncontradoException;
+	public void salvarPermissoesSelecionadas(List<TipoPermissao> listaPermissoes,GrupoAcesso grupoAcesso,Funcionalidade funcionalidade,Usuario usuario)throws ValidationException;
+	public List<Funcionalidade> obterFuncionalidadeTipoRotina() throws NenhumRegistroEncontradoException;
+	public List<TipoPermissao> obterPermissoes(Funcionalidade funcionalidade,GrupoAcesso grupoAcesso)throws NumberFormatException, NenhumRegistroEncontradoException,ValidationException;
+	public List<Funcionalidade> obterFuncionalidadesTipoModulo() throws NenhumRegistroEncontradoException;
+	public List<Funcionalidade> obterTodasFuncionalidadesUmModulo(Integer idModulo) throws NenhumRegistroEncontradoException;
+	public List<TipoPermissao> obterPermissoesCadastradas(Funcionalidade funcionalidade);
+
+}

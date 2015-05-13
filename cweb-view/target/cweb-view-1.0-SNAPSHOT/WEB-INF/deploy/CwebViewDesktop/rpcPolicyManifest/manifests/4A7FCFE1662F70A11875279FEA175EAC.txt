@@ -1,0 +1,2 @@
+serviceClass: br.com.cweb.view.cadastro.cadastroconvenio.client.service.CadastroConvenioServiceFacade
+path: 2E23069916AF5B59849EFB6B979133F4.gwt.rpc

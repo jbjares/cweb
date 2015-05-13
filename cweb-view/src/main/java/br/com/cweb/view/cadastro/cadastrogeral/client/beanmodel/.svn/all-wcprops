@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/cweb-repo-fnt/!svn/ver/372/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel
+END
+CidadeBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/cweb-repo-fnt/!svn/ver/93/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/CidadeBeanModel.java
+END
+GrupoAcessoBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/cweb-repo-fnt/!svn/ver/116/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/GrupoAcessoBeanModel.java
+END
+PessoaBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/cweb-repo-fnt/!svn/ver/141/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/PessoaBeanModel.java
+END
+EstadoBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/cweb-repo-fnt/!svn/ver/93/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/EstadoBeanModel.java
+END
+PerfilComissaoBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/cweb-repo-fnt/!svn/ver/116/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/PerfilComissaoBeanModel.java
+END
+TipoContaBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/cweb-repo-fnt/!svn/ver/372/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/TipoContaBeanModel.java
+END
+BancoBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/cweb-repo-fnt/!svn/ver/130/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/BancoBeanModel.java
+END
+AtribuicaoBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/cweb-repo-fnt/!svn/ver/116/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/AtribuicaoBeanModel.java
+END
+PessoaFisicaJuridicaBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/cweb-repo-fnt/!svn/ver/141/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/PessoaFisicaJuridicaBeanModel.java
+END
+PessoaJuridicaBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/cweb-repo-fnt/!svn/ver/124/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/cadastro/cadastrogeral/client/beanmodel/PessoaJuridicaBeanModel.java
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/cweb-repo-fnt/!svn/ver/482/trunk/cweb/cweb-persistence-provider
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-provider/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-provider/.project
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/cweb-repo-fnt/!svn/ver/273/trunk/cweb/cweb-persistence-provider/pom.xml
+END

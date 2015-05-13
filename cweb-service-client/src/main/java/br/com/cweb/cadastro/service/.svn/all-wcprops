@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/cweb-repo-fnt/!svn/ver/484/trunk/cweb/cweb-service-client/src/main/java/br/com/cweb/cadastro/service
+END
+LocalizacaoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/cweb-repo-fnt/!svn/ver/483/trunk/cweb/cweb-service-client/src/main/java/br/com/cweb/cadastro/service/LocalizacaoService.java
+END
+PlanoBancarioService.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/cweb-repo-fnt/!svn/ver/458/trunk/cweb/cweb-service-client/src/main/java/br/com/cweb/cadastro/service/PlanoBancarioService.java
+END
+InstituicaoFinanceiraService.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/cweb-repo-fnt/!svn/ver/533/trunk/cweb/cweb-service-client/src/main/java/br/com/cweb/cadastro/service/InstituicaoFinanceiraService.java
+END
+OrganogramaService.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/cweb-repo-fnt/!svn/ver/484/trunk/cweb/cweb-service-client/src/main/java/br/com/cweb/cadastro/service/OrganogramaService.java
+END
+AcessoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/cweb-repo-fnt/!svn/ver/606/trunk/cweb/cweb-service-client/src/main/java/br/com/cweb/cadastro/service/AcessoService.java
+END
+ComissaoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/cweb-repo-fnt/!svn/ver/134/trunk/cweb/cweb-service-client/src/main/java/br/com/cweb/cadastro/service/ComissaoService.java
+END

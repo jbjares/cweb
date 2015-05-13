@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/cweb-repo-fnt/!svn/ver/284/trunk/cweb/cweb-view/src/main/resources/db/migration
+END
+V1__versao_inicial.sql
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/cweb-repo-fnt/!svn/ver/284/trunk/cweb/cweb-view/src/main/resources/db/migration/V1__versao_inicial.sql
+END

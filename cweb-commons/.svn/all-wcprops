@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/cweb-repo-fnt/!svn/ver/474/trunk/cweb/cweb-commons
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-commons/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-commons/.project
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/cweb-repo-fnt/!svn/ver/279/trunk/cweb/cweb-commons/pom.xml
+END

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='CwebPersistenceCadastro'>
+<inherits name="br.com.cweb.core.persistence.CwebPersistenceCore"/>
+<inherits name="br.com.cweb.seguranca.persistence.CwebPersistenceSeguranca"/>
+ 
+<source path='entity' />
+</module>

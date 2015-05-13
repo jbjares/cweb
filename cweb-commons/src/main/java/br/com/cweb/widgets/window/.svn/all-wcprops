@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/cweb-repo-fnt/!svn/ver/456/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/window
+END
+IWindow.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/cweb-repo-fnt/!svn/ver/219/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/window/IWindow.java
+END
+DefaultWindowConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/cweb-repo-fnt/!svn/ver/583/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/window/DefaultWindowConfig.java
+END
+IWindowConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/cweb-repo-fnt/!svn/ver/584/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/window/IWindowConfig.java
+END
+AjudaCommonsWindow.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/cweb-repo-fnt/!svn/ver/456/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/window/AjudaCommonsWindow.java
+END

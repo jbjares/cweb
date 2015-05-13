@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"          
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.show_sql">true</property> 
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.max_fetch_depth">1</property>
+		<property name="hibernate.default_batch_fetch_size">4</property>
+		<property name="hibernate.">4</property>
+		<property name="hibernate.default_schema">cwebdesenv</property> 
+		<mapping resource="orm.xml" />
+		
+		<!-- Cadastro -->
+		<mapping class="br.com.cweb.cadastro.persistence.entity.InstituicaoFinanceira" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.Atribuicao" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.Cidade" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.ContaBancaria" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.Endereco" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.Estado" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.PerfilComissao" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.Pessoa" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.Convenio" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.PessoaFisica" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.PessoaJuridica" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.PessoaFisicaJuridica" />
+		<mapping class="br.com.cweb.cadastro.persistence.entity.ArvoreFamiliar" />
+		
+		
+		<!-- Seguranca -->
+		<mapping class="br.com.cweb.seguranca.persistence.entity.Usuario" />
+		<mapping class="br.com.cweb.seguranca.persistence.entity.GrupoAcesso" />
+		<mapping class="br.com.cweb.seguranca.persistence.entity.AcessoMenu" />
+		<mapping class="br.com.cweb.seguranca.persistence.entity.Funcionalidade" />
+		<mapping class="br.com.cweb.seguranca.persistence.entity.TipoPermissao" />
+	</session-factory>
+ 
+</hibernate-configuration>
+

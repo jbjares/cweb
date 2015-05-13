@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/cweb-repo-fnt/!svn/ver/423/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/util
+END
+CpfCnpj.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/cweb-repo-fnt/!svn/ver/352/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/util/CpfCnpj.java
+END
+Validable.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/cweb-repo-fnt/!svn/ver/284/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/util/Validable.java
+END
+Cpf.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/cweb-repo-fnt/!svn/ver/301/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/util/Cpf.java
+END
+ValidationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/cweb-repo-fnt/!svn/ver/284/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/util/ValidationException.java
+END
+ButtonUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/cweb-repo-fnt/!svn/ver/423/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/util/ButtonUtil.java
+END
+Cnpj.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/cweb-repo-fnt/!svn/ver/301/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/util/Cnpj.java
+END
+TypeFormatting.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/cweb-repo-fnt/!svn/ver/249/trunk/cweb/cweb-commons/src/main/java/br/com/cweb/widgets/util/TypeFormatting.java
+END

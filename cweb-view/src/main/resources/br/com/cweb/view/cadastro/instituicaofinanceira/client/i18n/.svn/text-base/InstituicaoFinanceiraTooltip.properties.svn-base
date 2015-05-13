@@ -1,0 +1,19 @@
+#Tooltip window de pesquisa
+
+identificadorInstituicao=Identificador da Instituição
+nome=Nome da Instituição Financeira
+webSite=Web Site da Instituição Financeira
+observacoes=Observacões no cadastro da Instituição Financeira
+sigla=Descrição da sigla (abreviatura do nome)
+	
+tipoInstituicao=Descrição do tipo de Instituição Financeira (Banco ou Parceiro)
+situacao=Descrição da situação da Instituição Financeira	
+	
+#tooltips dos botoes
+incluir=Utilize este botao para incluir novos registros
+pesquisar=Utilize este botao para efetuar a pesquisa de dados 
+limpar=Utilize este botao para limpar os dados do formulario
+alterar=Utilize este botao para alterar os dados do cadastro
+imprimir=Utilize este botao para imprimir o relatorio referente aos dados pesquisados.
+excluir=Utilize este botao para excluir um registro selecionado
+salvar = Utilize este botao para salvar as alteracoes realizadas

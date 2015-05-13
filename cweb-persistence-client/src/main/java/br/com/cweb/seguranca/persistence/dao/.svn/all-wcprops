@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/cweb-repo-fnt/!svn/ver/401/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/dao
+END
+TipoPermissaoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/cweb-repo-fnt/!svn/ver/588/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/dao/TipoPermissaoDAO.java
+END
+AcessoMenuDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/cweb-repo-fnt/!svn/ver/586/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/dao/AcessoMenuDAO.java
+END
+FuncionalidadeDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/cweb-repo-fnt/!svn/ver/603/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/dao/FuncionalidadeDAO.java
+END
+UsuarioDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/206/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/dao/UsuarioDAO.java
+END
+GrupoAcessoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/dao/GrupoAcessoDAO.java
+END

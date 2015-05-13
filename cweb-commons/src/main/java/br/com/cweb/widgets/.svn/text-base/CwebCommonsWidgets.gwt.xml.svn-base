@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="CwebCommonsWidgets">
+	<source path='build' />
+	<source path='constants' />
+	<source path='window' />
+	<source path='textfield' />
+	<source path='util' />
+	<source path='action' />
+	<source path='i18n' />
+	<source path='erro' />
+</module>

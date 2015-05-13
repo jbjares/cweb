@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+<!-- 	<stylesheet src="/ExtGWT/css/gxt-all.css"/> -->
+	<inherits name="com.extjs.gxt.ui.GXT"/>
+	<inherits name="com.google.gwt.user.User"/>
+	<inherits name="br.com.cweb.cadastro.persistence.CwebPersistenceCadastro"/>
+	<inherits name="br.com.cweb.view.template.CwebViewTemplate"/>
+	<inherits name="br.com.cweb.widgets.CwebCommonsWidgets"/>
+	<inherits name="br.com.cweb.relatorio.CwebCommonsRelatorio" />
+		
+	<source path='client' />
+</module>

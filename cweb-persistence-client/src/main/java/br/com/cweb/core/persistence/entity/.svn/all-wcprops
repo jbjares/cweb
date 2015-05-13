@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/cweb-repo-fnt/!svn/ver/240/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/entity
+END
+TipoVinculacao.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/cweb-repo-fnt/!svn/ver/115/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/entity/TipoVinculacao.java
+END
+EnumModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/entity/EnumModel.java
+END
+TipoSituacaoAtivacao.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/entity/TipoSituacaoAtivacao.java
+END
+EntityModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/cweb-repo-fnt/!svn/ver/240/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/entity/EntityModel.java
+END

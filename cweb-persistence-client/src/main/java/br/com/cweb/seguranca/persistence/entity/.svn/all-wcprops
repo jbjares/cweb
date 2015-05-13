@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/cweb-repo-fnt/!svn/ver/370/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity
+END
+TipoSituacaoGrupo.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/cweb-repo-fnt/!svn/ver/288/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/TipoSituacaoGrupo.java
+END
+AcessoGrupoDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/cweb-repo-fnt/!svn/ver/590/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/AcessoGrupoDTO.java
+END
+TipoFuncionalidade.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/cweb-repo-fnt/!svn/ver/559/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/TipoFuncionalidade.java
+END
+AcessoMenu.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/cweb-repo-fnt/!svn/ver/370/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/AcessoMenu.java
+END
+Funcionalidade.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/cweb-repo-fnt/!svn/ver/604/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/Funcionalidade.java
+END
+Usuario.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/196/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/Usuario.java
+END
+GrupoAcesso.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/cweb-repo-fnt/!svn/ver/287/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/GrupoAcesso.java
+END
+MenuDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/589/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/MenuDTO.java
+END
+TipoPermissao.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/cweb-repo-fnt/!svn/ver/565/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/seguranca/persistence/entity/TipoPermissao.java
+END

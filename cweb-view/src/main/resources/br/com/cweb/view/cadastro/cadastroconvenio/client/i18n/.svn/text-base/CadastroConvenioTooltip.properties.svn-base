@@ -1,0 +1,16 @@
+ajudar=Utilize este botão para exibir texto de ajuda
+alterar=Inicia o processo de alterar um convênio
+ativo=Indica que o convênio está Ativo
+excluirCadastro=Inicia processo de Excluir um convênio
+excluirPesquisa=Confirma a Exclusão do convênio selecionado
+imprimir=Abre o relatório dos convênios
+inativo=Indica que o convênio está Inativo
+limpar=Limpa o formulário
+nome=Descrição ou Nome que identifica o Convênio
+nomePesquisa=Informe o nome completo ou parcial do Convênio a ser pesquisado
+novo=Inicia o processo de criar um Convênio novo
+pesquisar=Realiza a pesquisa dos Convênios desejados
+salvar=Grava as informações incluidas ou alterada do Convênio selecionado
+situacao=Situação do Convênio: Ativo ou Inativo
+situacaoPesquisa=Selecione a situação do Convênio a ser pesquisado
+voltar=Cancela o processo e volta a tela de pesquisa

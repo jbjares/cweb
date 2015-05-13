@@ -1,0 +1,2 @@
+serviceClass: br.com.cweb.view.seguranca.acessorecurso.client.service.AcessoRecursoServiceFacade
+path: 4A2E88955115B37ED1A3FE11EA71EE20.gwt.rpc

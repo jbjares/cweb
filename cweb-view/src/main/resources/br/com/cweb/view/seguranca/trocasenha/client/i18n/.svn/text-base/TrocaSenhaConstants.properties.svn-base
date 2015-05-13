@@ -1,0 +1,12 @@
+
+#label fileds
+login=Login
+senhaAtual=Digite a Senha Atual
+novaSenha=Digite a Nova Senha
+confirmacaoSenha=Confirme a Nova Senha
+
+#label botoes
+ok=Ok
+limpar=Limpar
+
+titleForm=Trocar Senha

@@ -1,0 +1,2 @@
+serviceClass: br.com.cweb.view.cadastro.instituicaofinanceira.client.service.InstituicaoFinanceiraServiceFacade
+path: 2729397FC553B11208B849EEC21A24C3.gwt.rpc

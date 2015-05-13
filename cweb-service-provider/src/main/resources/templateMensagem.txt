@@ -1,0 +1,3 @@
+Prezado, usuário!
+
+Sua senha foi trocada para: ${senha}

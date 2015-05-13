@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/cweb-repo-fnt/!svn/ver/355/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/seguranca/acessomenugrupo/client/beanmodel
+END
+TipoPermissaoBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/cweb-repo-fnt/!svn/ver/627/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/seguranca/acessomenugrupo/client/beanmodel/TipoPermissaoBeanModel.java
+END
+AcessoGrupoDTOBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/cweb-repo-fnt/!svn/ver/354/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/seguranca/acessomenugrupo/client/beanmodel/AcessoGrupoDTOBeanModel.java
+END
+AcessoMenuBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/cweb-repo-fnt/!svn/ver/355/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/seguranca/acessomenugrupo/client/beanmodel/AcessoMenuBeanModel.java
+END
+FuncionalidadeBeanModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/cweb-repo-fnt/!svn/ver/626/trunk/cweb/cweb-view/src/main/java/br/com/cweb/view/seguranca/acessomenugrupo/client/beanmodel/FuncionalidadeBeanModel.java
+END

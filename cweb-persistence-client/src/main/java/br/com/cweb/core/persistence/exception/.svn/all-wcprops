@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/exception
+END
+DaoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/exception/DaoException.java
+END
+NenhumRegistroEncontradoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/cweb-repo-fnt/!svn/ver/66/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/exception/NenhumRegistroEncontradoException.java
+END
+ValidationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/cweb-repo-fnt/!svn/ver/534/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/exception/ValidationException.java
+END

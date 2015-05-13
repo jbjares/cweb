@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/cweb-repo-fnt/!svn/ver/196/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/dao
+END
+AbstractHibernateDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/cweb-repo-fnt/!svn/ver/602/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence/dao/AbstractHibernateDao.java
+END

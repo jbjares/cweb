@@ -1,0 +1,575 @@
+package br.com.cweb.view.cadastro.cadastrogeral.client.view;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import br.com.cweb.core.persistence.entity.TipoVinculacao;
+import br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacade;
+import br.com.cweb.view.cadastro.cadastrogeral.client.service.CadastroGeralServiceFacadeAsync;
+import br.com.cweb.view.template.client.TemplateWindow;
+import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
+import com.extjs.gxt.ui.client.Style.SelectionMode;
+import com.extjs.gxt.ui.client.data.BaseListLoader;
+import com.extjs.gxt.ui.client.data.BasePagingLoader;
+import com.extjs.gxt.ui.client.data.BeanModel;
+import com.extjs.gxt.ui.client.data.BeanModelReader;
+import com.extjs.gxt.ui.client.data.ListLoader;
+import com.extjs.gxt.ui.client.data.PagingLoadConfig;
+import com.extjs.gxt.ui.client.data.PagingLoadResult;
+import com.extjs.gxt.ui.client.data.PagingLoader;
+import com.extjs.gxt.ui.client.data.RpcProxy;
+import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.Events;
+import com.extjs.gxt.ui.client.event.IconButtonEvent;
+import com.extjs.gxt.ui.client.event.Listener;
+import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.store.ListStore;
+import com.extjs.gxt.ui.client.widget.Component;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.Window;
+import com.extjs.gxt.ui.client.widget.button.Button;
+import com.extjs.gxt.ui.client.widget.button.ToolButton;
+import com.extjs.gxt.ui.client.widget.form.ComboBox;
+import com.extjs.gxt.ui.client.widget.form.FieldSet;
+import com.extjs.gxt.ui.client.widget.form.LabelField;
+import com.extjs.gxt.ui.client.widget.form.NumberField;
+import com.extjs.gxt.ui.client.widget.form.Radio;
+import com.extjs.gxt.ui.client.widget.form.SimpleComboBox;
+import com.extjs.gxt.ui.client.widget.form.TextField;
+import com.extjs.gxt.ui.client.widget.grid.ColumnConfig;
+import com.extjs.gxt.ui.client.widget.grid.ColumnModel;
+import com.extjs.gxt.ui.client.widget.grid.Grid;
+import com.extjs.gxt.ui.client.widget.grid.GridSelectionModel;
+import com.extjs.gxt.ui.client.widget.layout.AbsoluteData;
+import com.extjs.gxt.ui.client.widget.layout.AbsoluteLayout;
+import com.extjs.gxt.ui.client.widget.toolbar.PagingToolBar;
+import com.extjs.gxt.ui.client.widget.form.RadioGroup;
+import com.extjs.gxt.ui.client.Style;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Widget;
+
+
+public class PesquisaCadastroGeralWindow extends TemplateWindow {
+
+	CadastroGeralServiceFacadeAsync service = GWT.create(CadastroGeralServiceFacade.class);
+
+	private Grid<BeanModel> grid;
+	private ColumnModel ColumnModel;
+	private NumberField textCodigo;
+	private TextField textSigla;
+	private ComboBox<BeanModel> comboAtribuicao;
+	private NumberField textCpfCnpj;
+	private TextField textNomeRazaoSocial;
+	private TextField textApelidoNomeFantasia;
+	private Radio radioPessoaFisica;
+	private Radio radioPessoaJuridica;
+	private SimpleComboBox<TipoVinculacao> comboVinculacao;
+	private ComboBox<BeanModel> comboCpfCnpjVinculador;
+	private ComboBox<BeanModel> comboGrupoAcesso;
+	private TextField textLogin;
+	private Radio radioLiberado;
+	private Radio radioBloqueado;
+	private Radio radioSituacaoAtiva;
+	private Radio radioSituacaoInativa;
+<<<<<<< .mine
+	private PagingToolBar toolBar;
+	private LayoutContainer containerPrincipal;
+	private ContentPanel  panelGrid;
+	private ContentPanel panelPrincipal;
+	private static int PAGE_SIZE = 5;
+=======
+
+	private ListStore<BeanModel> storeGridPesquisaPessoa;
+>>>>>>> .r137
+	
+	public PesquisaCadastroGeralWindow() {
+		
+		setMinimizable(true);
+		setResizable(false);
+		setSize("882px", "598px");
+		setHeading("Manter Cadastro Geral");
+		
+		containerPrincipal = new LayoutContainer();
+		containerPrincipal.setBorders(true);
+		
+		panelPrincipal = new ContentPanel();
+		panelPrincipal.setHeaderVisible(false);
+		panelPrincipal.setButtonAlign(HorizontalAlignment.LEFT);
+		panelPrincipal.setAutoWidth(true);
+		panelPrincipal.setAutoHeight(true);
+		panelPrincipal.setSize("800", "300");
+		panelPrincipal.add(getContainerIdentificacao());
+		panelPrincipal.add(getContainerVinculacao());
+		panelPrincipal.add(getContainerControleAcesso());
+		
+<<<<<<< .mine
+		containerPrincipal.add(panelPrincipal);
+		add(containerPrincipal);
+		add(getContainerBotoes());
+		add(getPanelGrid());
+=======
+		/**vinculacao**/
+		contentpanelPrincipal.add(getLayouContainerVinculacao());
+		
+		/**controle acesso**/
+		contentpanelPrincipal.add(getLayoutContainerControleAcesso());
+		layoutContainerPrincipal.add(contentpanelPrincipal);
+		contentpanelPrincipal.setSize("800", "300");
+		add(layoutContainerPrincipal);
+		layoutContainerPrincipal.setBorders(true);
+		
+		
+		LayoutContainer layoutContainerBotoespesquisa = new LayoutContainer();
+		AbsoluteLayout al_layoutContainerBotoespesquisa = new AbsoluteLayout();
+		layoutContainerBotoespesquisa.setLayout(al_layoutContainerBotoespesquisa);
+		
+		Button btnPesquisar = new Button("Pesquisar");
+		btnPesquisar.addListener(Events.Select, new Listener<ButtonEvent>() {
+			public void handleEvent(ButtonEvent e) {
+				RpcProxy proxyGrid = new RpcProxy() {
+					
+					@Override
+					protected void load(Object loadConfig, AsyncCallback callback) {
+						service.retornaListaPessoa(callback);
+					}
+				};
+				
+				BeanModelReader readerGrid = new BeanModelReader();
+				ListLoader loaderGrid = new BaseListLoader(proxyGrid, readerGrid);
+				storeGridPesquisaPessoa = new ListStore<BeanModel>(loaderGrid);
+				loaderGrid.load();
+			}
+		});
+		layoutContainerBotoespesquisa.add(btnPesquisar, new AbsoluteData(747, 18));
+		
+		Button btnLimpar = new Button("Limpar");
+		layoutContainerBotoespesquisa.add(btnLimpar, new AbsoluteData(813, 18));
+		add(layoutContainerBotoespesquisa);
+		layoutContainerBotoespesquisa.setSize("868", "40");
+		
+		
+		LayoutContainer layoutContainerResultadoPesquisa = new LayoutContainer();
+		
+		FieldSet fldstResultadoDaPesquisa = new FieldSet();
+		
+		gridConsulta = getGridConsulta();
+		fldstResultadoDaPesquisa.add(gridConsulta);
+		gridConsulta.setSize("846", "120");
+		gridConsulta.setBorders(true);
+		layoutContainerResultadoPesquisa.add(fldstResultadoDaPesquisa);
+		fldstResultadoDaPesquisa.setSize("868", "150");
+		fldstResultadoDaPesquisa.setHeading("Resultado da Pesquisa");
+		add(layoutContainerResultadoPesquisa);
+		layoutContainerResultadoPesquisa.setSize("868", "160");
+>>>>>>> .r137
+
+	}
+	
+	private Component getContainerIdentificacao() {
+		
+		FieldSet fieldsetIdentificacao = new FieldSet();
+		fieldsetIdentificacao.setAutoWidth(true);
+		fieldsetIdentificacao.setLayout(new AbsoluteLayout());
+		
+		radioSituacaoAtiva = new Radio();
+		radioSituacaoAtiva.setToolTip("Ativa");
+		radioSituacaoAtiva.setHideLabel(true);
+		radioSituacaoAtiva.setBoxLabel("Ativa");
+		fieldsetIdentificacao.add(radioSituacaoAtiva, new AbsoluteData(712, 22));
+		radioSituacaoAtiva.setSize("54px", "22px");
+		
+		radioSituacaoInativa = new Radio();
+		radioSituacaoInativa.setToolTip("Pessoas do tipo Jur\u00EDdica");
+		radioSituacaoInativa.setHideLabel(true);
+		radioSituacaoInativa.setBoxLabel("Inativa");
+		fieldsetIdentificacao.add(radioSituacaoInativa, new AbsoluteData(771, 22));
+		radioSituacaoInativa.setSize("66px", "22px");
+		
+		LayoutContainer layoutContainerIdentificacao = new LayoutContainer();
+		LayoutContainer layoutContainerespacoCima = new LayoutContainer();
+		layoutContainerIdentificacao.add(layoutContainerespacoCima);
+		layoutContainerespacoCima.setSize("864", "10");
+		
+		layoutContainerIdentificacao.add(fieldsetIdentificacao);
+		fieldsetIdentificacao.setSize("862", "135");
+		fieldsetIdentificacao.setHeading("Identifica\u00E7\u00E3o");
+		
+		//codigo
+		LabelField labelCdigo = new LabelField("C\u00F3digo:");
+		fieldsetIdentificacao.add(labelCdigo, new AbsoluteData(0, 5));
+		textCodigo = new NumberField();
+		textCodigo.focus();
+		textCodigo.setToolTip("Identificador da pessoa");
+		fieldsetIdentificacao.add(textCodigo, new AbsoluteData(0, 22));
+		
+		//sigla
+		LabelField labelSigla = new LabelField("Sigla:");
+		fieldsetIdentificacao.add(labelSigla, new AbsoluteData(0, 50));
+		textSigla = new TextField();
+		textSigla.setToolTip("Descrição da sigla (abreviatura do nome)");
+		fieldsetIdentificacao.add(textSigla, new AbsoluteData(0, 67));
+		
+		//atribuicao
+		LabelField labelAtribuicao = new LabelField("Atribui\u00E7\u00E3o:");
+		fieldsetIdentificacao.add(labelAtribuicao, new AbsoluteData(178, 5));
+		
+		
+		RpcProxy proxyAtribuicao = new RpcProxy() {
+			
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				service.retornaListaAtribuicao(callback);
+			}
+		};
+		
+		BeanModelReader readerAtribuicao = new BeanModelReader();
+		ListLoader loaderAtribuicao = new BaseListLoader(proxyAtribuicao, readerAtribuicao);
+		ListStore<BeanModel> storeAtribuicao = new ListStore<BeanModel>(loaderAtribuicao);
+		
+		comboAtribuicao = new ComboBox<BeanModel>();
+		comboAtribuicao.setToolTip("Identificador da atribuição da pessoa");
+		comboAtribuicao.setStore(storeAtribuicao);
+		comboAtribuicao.setSize("238px", "22px");
+		comboAtribuicao.setDisplayField("descricao");
+		fieldsetIdentificacao.add(comboAtribuicao, new AbsoluteData(178, 22));
+
+		//cpf/cnpj
+		LabelField labelCpfCnpj = new LabelField("CPF/CNPJ:");
+		fieldsetIdentificacao.add(labelCpfCnpj, new AbsoluteData(178, 50));
+		textCpfCnpj = new NumberField();
+		textCpfCnpj.setToolTip("Número do CPF/CNPJ da Pessoa");
+		fieldsetIdentificacao.add(textCpfCnpj, new AbsoluteData(178, 67));
+		textCpfCnpj.setSize("238px", "22px");
+
+		//nome/razao social
+		LabelField labelNomeRazoSocial = new LabelField("Nome/Raz\u00E3o Social:");
+		fieldsetIdentificacao.add(labelNomeRazoSocial, new AbsoluteData(446, 5));
+		textNomeRazaoSocial = new TextField();
+		textNomeRazaoSocial.setToolTip("Nome ou Razão Social da Pessoa");
+		fieldsetIdentificacao.add(textNomeRazaoSocial, new AbsoluteData(446, 22));
+		textNomeRazaoSocial.setSize("238px", "22px");
+		
+		//apelido
+		LabelField labelApelidoNomeFantasia = new LabelField("Apelido/Nome Fantasia:");
+		fieldsetIdentificacao.add(labelApelidoNomeFantasia, new AbsoluteData(446, 50));
+		textApelidoNomeFantasia = new TextField();
+		textApelidoNomeFantasia.setToolTip("Apelido ou Nome Fantasia da Pessoa");
+		fieldsetIdentificacao.add(textApelidoNomeFantasia, new AbsoluteData(446, 67));
+		textApelidoNomeFantasia.setSize("238px", "22px");
+		
+		//situacao
+		LabelField labelSituacao = new LabelField("Situa\u00E7\u00E3o:");
+		fieldsetIdentificacao.add(labelSituacao, new AbsoluteData(712, 5));
+
+
+		//tipo de pessoa
+		LabelField labelTipoPessoa = new LabelField("Tipo Pessoa:");
+		fieldsetIdentificacao.add(labelTipoPessoa, new AbsoluteData(711, 50));
+				
+		RadioGroup radioGrupoTipoPessoa = new RadioGroup();
+		radioGrupoTipoPessoa.setToolTip("Tipo de Pessoa F\u00EDsica ou Jur\u00EDdica");
+		
+		radioPessoaFisica = new Radio();
+		radioGrupoTipoPessoa.add(radioPessoaFisica);
+		radioPessoaFisica.setBoxLabel("F\u00EDsica");
+		radioPessoaFisica.setToolTip("Pessoas do tipo F\u00EDsica");
+		radioPessoaFisica.setHideLabel(true);
+		
+		radioPessoaJuridica = new Radio();
+		radioGrupoTipoPessoa.add(radioPessoaJuridica);
+		radioPessoaJuridica.setBoxLabel("Jur\u00EDdica");
+		radioPessoaJuridica.setToolTip("Pessoas do tipo Jur\u00EDdica");
+		radioPessoaJuridica.setHideLabel(true);
+		fieldsetIdentificacao.add(radioGrupoTipoPessoa, new AbsoluteData(712, 65));
+		radioGrupoTipoPessoa.setFieldLabel("radioGroupTipoPessoa");
+
+		return layoutContainerIdentificacao;
+	}
+
+	private Component getContainerVinculacao(){
+		
+		LayoutContainer layoutContainerVinculacao = new LayoutContainer();
+		
+		FieldSet fieldsetVinculacao = new FieldSet();
+		fieldsetVinculacao.setAutoWidth(true);
+		fieldsetVinculacao.setLayout(new AbsoluteLayout());
+		
+		LabelField labelVinculadoA = new LabelField("Vinculado \u00E0:");
+		fieldsetVinculacao.add(labelVinculadoA, new AbsoluteData(0, 0));
+		
+		comboVinculacao = new SimpleComboBox<TipoVinculacao>();
+		comboVinculacao.add(Arrays.asList(TipoVinculacao.values()));
+		fieldsetVinculacao.add(comboVinculacao, new AbsoluteData(0, 16));
+		comboVinculacao.setSize("413px", "22px");
+		
+		LabelField labelCpfCnpjDoVinculador = new LabelField("CPF/CNPJ do Vinculador:");
+		fieldsetVinculacao.add(labelCpfCnpjDoVinculador, new AbsoluteData(447, -2));
+		
+		comboCpfCnpjVinculador = new ComboBox<BeanModel>();
+		comboCpfCnpjVinculador.setStore(new ListStore());
+		fieldsetVinculacao.add(comboCpfCnpjVinculador, new AbsoluteData(447, 16));
+		comboCpfCnpjVinculador.setSize("382px", "22px");
+		layoutContainerVinculacao.add(fieldsetVinculacao);
+		fieldsetVinculacao.setSize("843", "75");
+		fieldsetVinculacao.setHeading("Vincula\u00E7\u00E3o/Depend\u00EAncia/Captador");
+		
+		return layoutContainerVinculacao;
+	} 
+	
+	private Component getContainerControleAcesso(){
+		
+		LayoutContainer layoutContainerControleAcesso = new LayoutContainer();
+		
+		FieldSet fieldsetControleAcesso = new FieldSet();
+		fieldsetControleAcesso.setLayout(new AbsoluteLayout());
+		
+		LabelField labelGrupoDeAcesso = new LabelField("Grupo de Acesso:");
+		fieldsetControleAcesso.add(labelGrupoDeAcesso, new AbsoluteData(0, 0));
+		
+		RpcProxy proxyGrupoAcesso = new RpcProxy() {
+			
+			  @Override
+			  protected void load(Object loadConfig, AsyncCallback callback) {
+				 service.retornaListaGrupoAcesso(callback);
+			  }
+		    };
+		
+		 BeanModelReader readerGrupoAcesso = new BeanModelReader();
+		 ListLoader loaderGrupoAcesso = new BaseListLoader(proxyGrupoAcesso, readerGrupoAcesso);
+		 ListStore<BeanModel> storeGrupoAcesso = new ListStore<BeanModel>(loaderGrupoAcesso);
+		
+		comboGrupoAcesso = new ComboBox<BeanModel>();
+		comboGrupoAcesso.setStore(storeGrupoAcesso);
+		comboGrupoAcesso.setSize("351px", "22px");
+		comboGrupoAcesso.setDisplayField("nome");
+		fieldsetControleAcesso.add(comboGrupoAcesso, new AbsoluteData(0, 15));
+		
+		LabelField labelLogin = new LabelField("Login:");
+		fieldsetControleAcesso.add(labelLogin, new AbsoluteData(391, 0));
+		
+		textLogin = new TextField();
+		fieldsetControleAcesso.add(textLogin, new AbsoluteData(391, 15));
+		textLogin.setSize("227px", "22px");
+		
+		LabelField labelSituaoDoUsurio = new LabelField("Situa\u00E7\u00E3o do Usu\u00E1rio:");
+		fieldsetControleAcesso.add(labelSituaoDoUsurio, new AbsoluteData(665, 0));
+		
+		radioLiberado = new Radio();
+		fieldsetControleAcesso.add(radioLiberado, new AbsoluteData(665, 17));
+		radioLiberado.setBoxLabel("Liberado");
+		radioLiberado.setHideLabel(true);
+		
+		radioBloqueado = new Radio();
+		fieldsetControleAcesso.add(radioBloqueado, new AbsoluteData(744, 17));
+		radioBloqueado.setBoxLabel("Bloqueado");
+		radioBloqueado.setHideLabel(true);
+		
+		layoutContainerControleAcesso.add(fieldsetControleAcesso);
+		fieldsetControleAcesso.setSize("866", "75");
+		fieldsetControleAcesso.setAutoWidth(true);
+		fieldsetControleAcesso.setHeading("Controle de Acesso do Usu\u00E1rio");
+		
+		return layoutContainerControleAcesso;
+	}
+	
+	private Component getContainerBotoes(){
+		
+		/* define o container para os botoes de pesquisa */
+		LayoutContainer containerBotoes = new LayoutContainer();
+		
+		/* define o layout para o container*/
+		AbsoluteLayout layoutBotoes = new AbsoluteLayout();
+		containerBotoes.setLayout(layoutBotoes);
+		
+		/* define os botoes*/
+		Button btnPesquisar = new Button("Pesquisar");
+		btnPesquisar.addSelectionListener(new SelectionListener<ButtonEvent>() {
+			public void componentSelected(ButtonEvent ce) {
+				
+				
+			}
+		});
+		Button btnLimpar = new Button("Limpar");
+		Button btnAlterar = new Button("Alterar");
+		Button btnIncluir = new Button("Incluir");
+		btnIncluir.addSelectionListener(new SelectionListener<ButtonEvent>() {
+			public void componentSelected(ButtonEvent ce) {
+			}
+		});
+		Button btnExcluir = new Button("Excluir");
+		btnExcluir.addSelectionListener(new SelectionListener<ButtonEvent>() {
+			public void componentSelected(ButtonEvent ce) {
+			}
+		});
+		
+		btnIncluir.addListener(Events.Select, new Listener<ButtonEvent>() {
+			public void handleEvent(ButtonEvent e) {
+				IncluiAlteraCadastroGeralWindow incluiAlteraCadastroGeralWindow = new IncluiAlteraCadastroGeralWindow("Incluir");
+				incluiAlteraCadastroGeralWindow.setModal(true);
+				incluiAlteraCadastroGeralWindow.setMinimizable(false);
+				incluiAlteraCadastroGeralWindow.show();
+			}
+		});
+		
+		/* adiciona os botoes ao grid */
+		containerBotoes.add(btnPesquisar, new AbsoluteData(592, 6));
+		containerBotoes.add(btnLimpar, new AbsoluteData(658, 6));
+		containerBotoes.add(btnAlterar, new AbsoluteData(804, 6));
+		containerBotoes.add(btnIncluir, new AbsoluteData(758, 6));
+		containerBotoes.add(btnExcluir, new AbsoluteData(708, 6));
+		containerBotoes.setSize("868", "32");
+	
+		return containerBotoes;
+	}
+	
+	private ContentPanel getPanelGrid(){
+		
+		grid = getGridConsulta();
+		panelGrid = new ContentPanel();
+		panelGrid.add(grid);
+		panelGrid.setBottomComponent(toolBar);
+		panelGrid.setHeading("Resultado da Pesquisa");
+		return panelGrid;
+	}
+	
+	private ColumnModel getColumnModelJuridica() {
+		 List<ColumnConfig> configs = new ArrayList<ColumnConfig>();  
+		   
+		 ColumnConfig column = new ColumnConfig();    
+		 column.setId("id");    
+		 column.setHeader("Codigo");    
+		 column.setWidth(100);    
+		 configs.add(column);  
+		 
+		 column = new ColumnConfig();    
+		 column.setId("nomeFantasia");    
+		 column.setHeader("Nome Fantasia");    
+		 column.setWidth(400);
+		 configs.add(column);
+		 
+		 column = new ColumnConfig();    
+		 column.setId("cnpj");    
+		 column.setHeader("CNPJ");    
+		 column.setWidth(150);
+		 configs.add(column);
+		 
+		 column = new ColumnConfig();    
+		 column.setId("cidade");    
+		 column.setHeader("Cidade");    
+		 column.setWidth(100);
+		 configs.add(column);
+		 
+		 column = new ColumnConfig();    
+		 column.setId("uf");    
+		 column.setHeader("UF");    
+		 column.setWidth(95);
+		 configs.add(column);
+		 
+		 ColumnModel columnModel = new ColumnModel(configs);
+		 
+		 return columnModel;
+	}
+	
+	
+	private ColumnModel getColumnModelFisica() {
+		 List<ColumnConfig> configs = new ArrayList<ColumnConfig>();  
+		   
+		 ColumnConfig column = new ColumnConfig();    
+		 column.setId("id");    
+		 column.setHeader("Codigo");    
+		 column.setWidth(100);    
+		 configs.add(column);  
+		 
+		 column = new ColumnConfig();    
+		 column.setId("nomeFantasia");    
+		 column.setHeader("Nome Fantasia");    
+		 column.setWidth(400);
+		 configs.add(column);
+		 
+		 column = new ColumnConfig();    
+		 column.setId("cnpj");    
+		 column.setHeader("CNPJ");    
+		 column.setWidth(150);
+		 configs.add(column);
+		 
+		 column = new ColumnConfig();    
+		 column.setId("cidade");    
+		 column.setHeader("Cidade");    
+		 column.setWidth(100);
+		 configs.add(column);
+		 
+		 column = new ColumnConfig();    
+		 column.setId("uf");    
+		 column.setHeader("UF");    
+		 column.setWidth(95);
+		 configs.add(column);
+		 
+		 ColumnModel columnModel = new ColumnModel(configs);
+		 
+		 return columnModel;
+	}
+	
+	public Grid<BeanModel> getGridConsulta() {
+		
+<<<<<<< .mine
+		RpcProxy proxyGrid = new RpcProxy() {
+				
+			@Override
+			protected void load(Object loadConfig, AsyncCallback callback) {
+				service.loadPessoa((PagingLoadConfig)loadConfig, callback);
+			}
+		};
+			
+		BeanModelReader readerGrid = new BeanModelReader();
+		PagingLoader<PagingLoadResult<BeanModel>> loader = new BasePagingLoader<PagingLoadResult<BeanModel>>(proxyGrid,readerGrid);
+		ListStore<BeanModel> store = new ListStore<BeanModel>(loader);
+		loader.load();
+=======
+		if (gridConsulta == null) {
+			storeGridPesquisaPessoa = new ListStore<BeanModel>();
+			gridConsulta = new Grid<BeanModel>(storeGridPesquisaPessoa,gridConsultaColumnModel);
+			gridConsulta.setColumnReordering(true);
+			gridConsulta.setVisible(true);
+			gridConsulta.setColumnLines(true);
+			gridConsulta.setStripeRows(true);
+			gridConsulta.setSize("803", "150");
+			gridConsulta.setBorders(true);
+>>>>>>> .r137
+			
+		toolBar = new PagingToolBar(PAGE_SIZE);
+		toolBar.bind(loader);
+		
+		ColumnModel columnModel;
+		
+		if(radioPessoaFisica.getValue()){
+			columnModel = getColumnModelFisica();
+		}
+		else{
+			columnModel = getColumnModelJuridica();
+		}
+		
+		Grid<BeanModel> grid = new Grid<BeanModel>(store,columnModel);
+		
+		grid.setColumnReordering(true);
+		grid.setVisible(true);
+		grid.setColumnLines(true);
+		grid.setStripeRows(true);
+		grid.setSize("700", "150");
+		grid.setBorders(true);
+		grid.setAutoWidth(true);
+			
+		GridSelectionModel selectModel = grid.getSelectionModel();
+		selectModel.setSelectionMode(SelectionMode.SINGLE);
+		
+		return grid;
+	}
+
+	@Override
+	protected void onAjuda() {
+		AjudaCadastroGeralWindow ajudaCadastroGeralWindow = new AjudaCadastroGeralWindow();
+		ajudaCadastroGeralWindow.show();
+	}
+}

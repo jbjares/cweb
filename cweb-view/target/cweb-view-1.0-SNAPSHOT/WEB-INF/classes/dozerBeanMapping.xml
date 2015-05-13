@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+
+
+	<mapping>
+		<class-a>br.com.cweb.seguranca.persistence.entity.GrupoAcesso
+		</class-a>
+		<class-b>br.com.cweb.seguranca.persistence.entity.GrupoAcesso
+		</class-b>
+		<field-exclude>
+			<a>usuarios</a>
+			<b>usuarios</b>
+		</field-exclude>
+		<field-exclude>
+			<a>pessoaResponsavel</a>
+			<b>pessoaResponsavel</b>
+		</field-exclude>
+	</mapping>
+
+	<mapping>
+		<class-a>br.com.cweb.cadastro.persistence.entity.Estado</class-a>
+		<class-b>br.com.cweb.cadastro.persistence.entity.Estado</class-b>
+		<field-exclude>
+			<a>cidades</a>
+			<b>cidades</b>
+		</field-exclude>
+	</mapping>
+	<mapping>
+		<class-a>br.com.cweb.cadastro.persistence.entity.PerfilComissao
+		</class-a>
+		<class-b>br.com.cweb.cadastro.persistence.entity.PerfilComissao
+		</class-b>
+		<field-exclude>
+			<a>pessoas</a>
+			<b>pessoas</b>
+		</field-exclude>
+	</mapping>
+	<mapping>
+		<class-a>br.com.cweb.seguranca.persistence.entity.Usuario</class-a>
+		<class-b>br.com.cweb.seguranca.persistence.entity.Usuario</class-b>
+		<field-exclude>
+			<a>pessoa</a>
+			<b>pessoa</b>
+		</field-exclude>
+	</mapping>
+
+	<mapping>
+		<class-a>br.com.cweb.cadastro.persistence.entity.Endereco</class-a>
+		<class-b>br.com.cweb.cadastro.persistence.entity.Endereco</class-b>
+		<field-exclude>
+			<a>pessoa</a>
+			<b>pessoa</b>
+		</field-exclude>
+	</mapping>
+	
+	<mapping>
+		<class-a>br.com.cweb.seguranca.persistence.entity.Funcionalidade</class-a>
+		<class-b>br.com.cweb.seguranca.persistence.entity.Funcionalidade</class-b>
+		<field-exclude>
+			<a>tipoPermissoes</a>
+			<b>tipoPermissoes</b>
+		</field-exclude>
+	</mapping>
+	
+	<mapping>
+		<class-a>br.com.cweb.cadastro.persistence.entity.Pessoa</class-a>
+		<class-b>br.com.cweb.cadastro.persistence.entity.Pessoa</class-b>
+		<field-exclude>
+			<a>dadosBancarios</a>
+			<b>dadosBancarios</b>
+		</field-exclude>
+		<field-exclude>
+			<a>enderecos</a>
+			<b>enderecos</b>
+		</field-exclude>
+		<field-exclude>
+			<a>vinculados</a>
+			<b>vinculados</b>
+		</field-exclude>
+	</mapping>
+	
+	
+</mappings>

@@ -1,0 +1,2 @@
+serviceClass: br.com.cweb.view.seguranca.trocasenha.client.service.TrocaSenhaServiceFacade
+path: 80D1767BE8A4B6F41B49ED7841A7C235.gwt.rpc

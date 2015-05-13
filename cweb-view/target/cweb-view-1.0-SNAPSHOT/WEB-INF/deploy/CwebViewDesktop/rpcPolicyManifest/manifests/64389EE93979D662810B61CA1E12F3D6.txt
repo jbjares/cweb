@@ -1,0 +1,2 @@
+serviceClass: br.com.cweb.view.seguranca.cadastrogrupoacesso.client.service.CadastroGrupoAcessoServiceFacade
+path: 5ACA1935FAED1DA5248E9FD457881F4F.gwt.rpc

@@ -1,0 +1,77 @@
+10
+
+dir
+507
+https://subversion.assembla.com/svn/cweb-repo-fnt/trunk/cweb/cweb-persistence-client/src/main/java/br/com/cweb/core/persistence
+https://subversion.assembla.com/svn/cweb-repo-fnt
+
+
+
+2011-12-18T12:34:36.271775Z
+446
+luciano.logrado
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+75361ff3-b4e9-43f5-a7a9-d500a547c727
+
+dao
+dir
+
+beanmodel
+dir
+
+entity
+dir
+
+util
+dir
+
+CwebPersistenceCore.gwt.xml
+file
+
+
+
+
+2011-10-10T02:52:09.255731Z
+18f009536f213486d12373f8c1c86c2b
+2011-10-11T00:49:06.501912Z
+77
+sebastiao_nunes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+187
+
+exception
+dir
+

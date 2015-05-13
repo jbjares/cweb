@@ -1,0 +1,2 @@
+serviceClass: br.com.cweb.view.desktop.client.service.DesktopService
+path: A802545AB2FA290DC57AA78B7F0A9929.gwt.rpc

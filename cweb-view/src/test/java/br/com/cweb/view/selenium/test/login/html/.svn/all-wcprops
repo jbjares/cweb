@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/cweb-repo-fnt/!svn/ver/274/trunk/cweb/cweb-view/src/test/java/br/com/cweb/view/selenium/test/login/html
+END
+LimpaLoginSenhaSeleniumTest.html
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/cweb-repo-fnt/!svn/ver/274/trunk/cweb/cweb-view/src/test/java/br/com/cweb/view/selenium/test/login/html/LimpaLoginSenhaSeleniumTest.html
+END
+LogaComUsuarioSemSenha.html
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/cweb-repo-fnt/!svn/ver/274/trunk/cweb/cweb-view/src/test/java/br/com/cweb/view/selenium/test/login/html/LogaComUsuarioSemSenha.html
+END
+LogaComSenhaSemLogin.html
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/cweb-repo-fnt/!svn/ver/274/trunk/cweb/cweb-view/src/test/java/br/com/cweb/view/selenium/test/login/html/LogaComSenhaSemLogin.html
+END
+LogaComMatrizSucessoSeleniumTest.html
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/cweb-repo-fnt/!svn/ver/274/trunk/cweb/cweb-view/src/test/java/br/com/cweb/view/selenium/test/login/html/LogaComMatrizSucessoSeleniumTest.html
+END
+LoginSenhaInvalidosSeleniumTest.html
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/cweb-repo-fnt/!svn/ver/274/trunk/cweb/cweb-view/src/test/java/br/com/cweb/view/selenium/test/login/html/LoginSenhaInvalidosSeleniumTest.html
+END
